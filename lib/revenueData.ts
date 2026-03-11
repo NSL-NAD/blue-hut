@@ -13,7 +13,7 @@ export const MENU_ITEMS: MenuItem[] = [
   { name: 'Watermelon Cup', price: 6.0, cogs: 1.5, margin: 0.75, mix: 0.14 },
   { name: 'Protein Cookie', price: 4.5, cogs: 1.2, margin: 0.73, mix: 0.1 },
   { name: 'Avocado Toast', price: 12.0, cogs: 3.5, margin: 0.71, mix: 0.12 },
-  { name: 'Bartolotta Lobster Roll', price: 22.0, cogs: 9.0, margin: 0.59, mix: 0.1 },
+  { name: 'Bartolotta Lobster Roll', price: 39.0, cogs: 14.0, margin: 0.64, mix: 0.1 }, // price from Harbor House; COGS estimated ~36% food cost — update when actual known
 ]
 
 // Computed from menu mix
