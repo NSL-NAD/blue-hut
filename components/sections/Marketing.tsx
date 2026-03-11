@@ -8,17 +8,22 @@ const nSquaredHandles = [
   'Social content creation and channel management',
   'Primary event and pop-up promotion',
   'Digital design and creative assets',
+  'Community outreach and local partnerships',
+  'Email marketing and customer engagement',
 ]
 
 const partnerContributes = [
-  'Existing audience, brand equity, and PR relationships',
-  'Local press and media contacts',
-  'In-venue and in-park signage + activation',
+  'Existing audience and brand equity',
+  'Established food and beverage offerings',
 ]
 
 export default function Marketing() {
   return (
     <SectionWrapper sectionId="marketing" bg="surface">
+      {/* Geometric accents */}
+      <div className="geo-diamond" style={{ top: '12%', right: '6%', width: '70px', height: '70px', borderColor: 'rgba(255,45,123,0.1)' }} />
+      <div className="geo-ring" style={{ bottom: '10%', left: '4%', width: '55px', height: '55px', borderColor: 'rgba(0,240,255,0.08)' }} />
+
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

@@ -11,11 +11,17 @@ export default function Close() {
 
   return (
     <SectionWrapper sectionId="close" bg="deep">
-      {/* Synthwave sun */}
+      {/* Synthwave sun — positioned at very bottom, just above grid */}
       <div className="synthwave-sun" />
 
-      {/* Synthwave grid floor */}
+      {/* Enhanced synthwave grid floor */}
       <div className="synthwave-grid" />
+
+      {/* Floating geometric accents */}
+      <div className="geo-diamond" style={{ top: '10%', left: '8%', width: '60px', height: '60px', borderColor: 'rgba(255,45,123,0.1)' }} />
+      <div className="geo-diamond" style={{ top: '15%', right: '10%', width: '40px', height: '40px', borderColor: 'rgba(0,240,255,0.08)' }} />
+      <div className="geo-ring" style={{ bottom: '55%', left: '12%', width: '90px', height: '90px', borderColor: 'rgba(176,38,255,0.08)' }} />
+      <div className="geo-ring" style={{ top: '20%', right: '15%', width: '60px', height: '60px', borderColor: 'rgba(255,214,0,0.06)' }} />
 
       <div className="flex flex-col items-center justify-center text-center relative z-20">
         <motion.h2
@@ -47,8 +53,8 @@ export default function Close() {
           {/* Primary CTA — sunset gradient */}
           <motion.a
             href="mailto:nsquaredlifestyle@gmail.com"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.98 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.97 }}
             className="flex items-center justify-center gap-2.5 px-10 py-4 rounded-xl font-mono text-sm uppercase tracking-wider text-white transition-all duration-200"
             style={{
               background: 'var(--gradient-sunset)',
@@ -62,8 +68,8 @@ export default function Close() {
           {/* Secondary CTA — cyan outline */}
           <motion.button
             onClick={handleDownload}
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.98 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.97 }}
             className="flex items-center justify-center gap-2.5 px-10 py-4 rounded-xl font-mono text-sm uppercase tracking-wider transition-all duration-200"
             style={{
               border: '1px solid rgba(0,240,255,0.4)',

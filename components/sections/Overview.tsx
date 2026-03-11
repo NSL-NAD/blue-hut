@@ -19,6 +19,9 @@ export default function Overview() {
           background: 'radial-gradient(circle, rgba(255,45,123,0.06) 0%, transparent 70%)',
         }}
       />
+      {/* Geometric accents */}
+      <div className="geo-diamond" style={{ bottom: '15%', right: '6%', width: '65px', height: '65px', borderColor: 'rgba(255,214,0,0.08)' }} />
+      <div className="geo-ring" style={{ top: '18%', right: '12%', width: '45px', height: '45px', borderColor: 'rgba(176,38,255,0.08)' }} />
 
       <div className="flex flex-col gap-8">
         {/* Headline */}
@@ -58,7 +61,7 @@ export default function Overview() {
           {highlights.map((h) => (
             <div
               key={h.label}
-              className="flex items-center gap-2.5 px-5 py-3 rounded-full transition-all duration-300 hover:scale-[1.02]"
+              className="flex items-center gap-2.5 px-5 py-3 rounded-full transition-all duration-300 hover:scale-[1.04] hover:shadow-[0_0_20px_rgba(255,45,123,0.15)]"
               style={{
                 background: 'rgba(255,45,123,0.08)',
                 border: '1px solid rgba(255,45,123,0.1)',

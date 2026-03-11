@@ -43,6 +43,10 @@ const mechanics = [
 export default function SubleaseMechanics() {
   return (
     <SectionWrapper sectionId="sublease-mechanics" bg="surface">
+      {/* Geometric accents */}
+      <div className="geo-diamond" style={{ top: '8%', right: '5%', width: '60px', height: '60px', borderColor: 'rgba(0,240,255,0.08)' }} />
+      <div className="geo-ring" style={{ bottom: '12%', left: '4%', width: '50px', height: '50px', borderColor: 'rgba(255,107,45,0.08)' }} />
+
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

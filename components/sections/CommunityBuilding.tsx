@@ -50,6 +50,10 @@ export default function CommunityBuilding() {
           background: 'radial-gradient(circle, rgba(0,240,255,0.06) 0%, transparent 70%)',
         }}
       />
+      {/* Geometric accents */}
+      <div className="geo-diamond" style={{ top: '10%', right: '5%', width: '55px', height: '55px', borderColor: 'rgba(255,45,123,0.1)' }} />
+      <div className="geo-ring" style={{ bottom: '8%', right: '8%', width: '70px', height: '70px', borderColor: 'rgba(255,214,0,0.07)' }} />
+      <div className="geo-diamond" style={{ bottom: '20%', left: '3%', width: '40px', height: '40px', borderColor: 'rgba(176,38,255,0.08)' }} />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}

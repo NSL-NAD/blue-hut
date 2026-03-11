@@ -55,6 +55,11 @@ body {
   font-family: var(--font-body), system-ui, sans-serif;
   margin: 0;
   padding: 0;
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='32' style='font-size:24px'><text y='24'>🍉</text></svg>") 4 4, auto;
+}
+
+a, button, [role="button"], input[type="range"] {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='32' style='font-size:24px'><text y='24'>🍉</text></svg>") 4 4, pointer;
 }
 
 /* ============================================
@@ -119,7 +124,7 @@ body {
 }
 
 /* ============================================
-   CARDS — Glass + Glow
+   CARDS — Glass + Glow (enhanced hover)
    ============================================ */
 .card-glass {
   background: var(--bg-glass);
@@ -129,7 +134,7 @@ body {
   border-radius: 1.25rem;
   padding: 2rem 2.5rem;
   box-shadow: var(--shadow-soft);
-  transition: all 0.3s ease;
+  transition: all 0.35s ease;
 }
 
 @supports not (backdrop-filter: blur(1px)) {
@@ -139,9 +144,12 @@ body {
 }
 
 .card-glass:hover {
-  border-color: rgba(0, 240, 255, 0.12);
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.06), 0 8px 40px rgba(0, 0, 0, 0.5);
-  transform: translateY(-2px);
+  border-color: rgba(0, 240, 255, 0.2);
+  box-shadow:
+    0 0 25px rgba(0, 240, 255, 0.12),
+    0 0 50px rgba(0, 240, 255, 0.04),
+    0 12px 40px rgba(0, 0, 0, 0.5);
+  transform: translateY(-4px);
 }
 
 .card-neon {
@@ -152,7 +160,16 @@ body {
   border-radius: 1.25rem;
   padding: 2rem 2.5rem;
   box-shadow: 0 0 15px rgba(255, 45, 123, 0.08), var(--shadow-soft);
-  transition: all 0.3s ease;
+  transition: all 0.35s ease;
+}
+
+.card-neon:hover {
+  border-color: rgba(255, 45, 123, 0.35);
+  box-shadow:
+    0 0 30px rgba(255, 45, 123, 0.15),
+    0 0 60px rgba(255, 45, 123, 0.06),
+    0 12px 40px rgba(0, 0, 0, 0.5);
+  transform: translateY(-4px);
 }
 
 .card-stat {
@@ -163,11 +180,13 @@ body {
   border-radius: 1rem;
   padding: 1.5rem;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: all 0.35s ease;
 }
 
 .card-stat:hover {
-  border-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(0, 240, 255, 0.15);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.08), 0 8px 30px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
 }
 
 /* ============================================
@@ -181,51 +200,92 @@ body {
 }
 
 /* ============================================
-   DECORATIVE — Synthwave Grid Floor
+   DECORATIVE — Geometric Patterns
+   ============================================ */
+.geo-diamond {
+  position: absolute;
+  border: 1.5px solid rgba(255, 45, 123, 0.1);
+  transform: rotate(45deg);
+  border-radius: 4px;
+  pointer-events: none;
+  animation: geo-float 8s ease-in-out infinite;
+}
+
+.geo-ring {
+  position: absolute;
+  border: 1.5px solid rgba(0, 240, 255, 0.08);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: geo-float 10s ease-in-out infinite reverse;
+}
+
+.geo-triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  animation: geo-float 12s ease-in-out infinite;
+}
+
+@keyframes geo-float {
+  0%, 100% { transform: rotate(45deg) translateY(0); opacity: 1; }
+  50% { transform: rotate(45deg) translateY(-12px); opacity: 0.6; }
+}
+
+@keyframes geo-ring-float {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+  50% { transform: translateY(-8px) scale(1.05); opacity: 0.6; }
+}
+
+/* ============================================
+   DECORATIVE — Synthwave Grid Floor (enhanced)
    ============================================ */
 .synthwave-grid {
   position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
-  height: 40%;
+  left: -20%;
+  right: -20%;
+  height: 50%;
   background:
     repeating-linear-gradient(
       90deg,
-      rgba(0, 240, 255, 0.07) 0px,
-      rgba(0, 240, 255, 0.07) 1px,
+      rgba(0, 240, 255, 0.1) 0px,
+      rgba(0, 240, 255, 0.1) 1px,
       transparent 1px,
-      transparent 80px
+      transparent 60px
     ),
     repeating-linear-gradient(
       0deg,
-      rgba(0, 240, 255, 0.07) 0px,
-      rgba(0, 240, 255, 0.07) 1px,
+      rgba(0, 240, 255, 0.08) 0px,
+      rgba(0, 240, 255, 0.08) 1px,
       transparent 1px,
-      transparent 80px
+      transparent 40px
     );
-  transform: perspective(500px) rotateX(60deg);
+  transform: perspective(400px) rotateX(55deg);
   transform-origin: bottom center;
-  mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, transparent 100%);
+  mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 40%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 40%, transparent 100%);
   pointer-events: none;
 }
 
 /* ============================================
-   DECORATIVE — Synthwave Sun
+   DECORATIVE — Synthwave Sun (moved to bottom)
    ============================================ */
 .synthwave-sun {
   position: absolute;
-  bottom: 38%;
+  bottom: 18%;
   left: 50%;
   transform: translateX(-50%);
-  width: 200px;
-  height: 100px;
-  border-radius: 200px 200px 0 0;
+  width: 240px;
+  height: 120px;
+  border-radius: 240px 240px 0 0;
   background: linear-gradient(180deg, #FF2D7B, #FF6B2D, #FFD600);
   overflow: hidden;
   pointer-events: none;
-  box-shadow: 0 0 60px rgba(255, 45, 123, 0.3), 0 0 120px rgba(255, 107, 45, 0.15);
+  box-shadow:
+    0 0 80px rgba(255, 45, 123, 0.35),
+    0 0 160px rgba(255, 107, 45, 0.18),
+    0 0 240px rgba(255, 214, 0, 0.08);
 }
 
 .synthwave-sun::after {
@@ -261,9 +321,13 @@ input[type="range"]::-webkit-slider-thumb {
   height: 22px;
   border-radius: 50%;
   background: var(--neon-pink);
-  cursor: pointer;
   border: 2px solid var(--bg-deep);
   box-shadow: 0 0 10px rgba(255, 45, 123, 0.5), 0 0 20px rgba(255, 45, 123, 0.2);
+  transition: box-shadow 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 16px rgba(255, 45, 123, 0.7), 0 0 35px rgba(255, 45, 123, 0.35);
 }
 
 input[type="range"]::-moz-range-thumb {
@@ -271,7 +335,6 @@ input[type="range"]::-moz-range-thumb {
   height: 22px;
   border-radius: 50%;
   background: var(--neon-pink);
-  cursor: pointer;
   border: 2px solid var(--bg-deep);
   box-shadow: 0 0 10px rgba(255, 45, 123, 0.5), 0 0 20px rgba(255, 45, 123, 0.2);
 }
