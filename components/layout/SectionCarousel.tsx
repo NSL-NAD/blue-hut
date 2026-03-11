@@ -20,7 +20,7 @@ export default function SectionCarousel() {
       <section id="section-3" className="snap-section"><MenuItems /></section>
       <section id="section-4" className="snap-section"><CommunityBuilding /></section>
       <section id="section-5" className="snap-section"><Marketing /></section>
-      <div id="section-6"><RevenueModel /></div>
+      <section id="section-6" className="snap-section"><RevenueModel /></section>
       <section id="section-7" className="snap-section"><SubleaseMechanics /></section>
       <section id="section-8" className="snap-section"><AboutNSquared /></section>
       <section id="section-9" className="snap-section"><Close /></section>
