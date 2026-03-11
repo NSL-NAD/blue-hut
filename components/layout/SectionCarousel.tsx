@@ -2,6 +2,7 @@
 
 import Hero from '@/components/sections/Hero'
 import Overview from '@/components/sections/Overview'
+import WhyProposing from '@/components/sections/WhyProposing'
 import MenuConcept from '@/components/sections/MenuConcept'
 import MenuItems from '@/components/sections/MenuItems'
 import CommunityBuilding from '@/components/sections/CommunityBuilding'
@@ -17,15 +18,16 @@ export default function SectionCarousel() {
     <main>
       <section id="section-0" className="snap-section"><Hero /></section>
       <section id="section-1" className="snap-section"><Overview /></section>
-      <section id="section-2" className="snap-section"><MenuConcept /></section>
-      <section id="section-3" className="snap-section"><MenuItems /></section>
-      <section id="section-4" className="snap-section"><CommunityBuilding /></section>
-      <section id="section-5" className="snap-section"><Marketing /></section>
-      <section id="section-6" className="snap-section"><RevenueModel /></section>
-      <section id="section-7" className="snap-section"><SubleaseMechanics /></section>
-      <section id="section-8" className="snap-section"><NextSteps /></section>
-      <section id="section-9" className="snap-section"><AboutNSquared /></section>
-      <section id="section-10" className="snap-section"><Close /></section>
+      <section id="section-2" className="snap-section"><WhyProposing /></section>
+      <section id="section-3" className="snap-section"><MenuConcept /></section>
+      <section id="section-4" className="snap-section"><MenuItems /></section>
+      <section id="section-5" className="snap-section"><CommunityBuilding /></section>
+      <section id="section-6" className="snap-section"><Marketing /></section>
+      <section id="section-7" className="snap-section"><RevenueModel /></section>
+      <section id="section-8" className="snap-section"><SubleaseMechanics /></section>
+      <section id="section-9" className="snap-section"><NextSteps /></section>
+      <section id="section-10" className="snap-section"><AboutNSquared /></section>
+      <section id="section-11" className="snap-section"><Close /></section>
     </main>
   )
 }
