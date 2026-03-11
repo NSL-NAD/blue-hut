@@ -82,6 +82,12 @@ export default function CommunityBuilding() {
           a family-friendly hub where Milwaukeeans gather, create memories, and come
           back all summer long.
         </p>
+        <p
+          className="font-mono text-xs uppercase tracking-widest mt-3"
+          style={{ color: 'var(--text-dim)' }}
+        >
+          ✦ The following are brainstorm ideas — not commitments. We&rsquo;re open to shaping this together.
+        </p>
         <div className="neon-stripe w-20 mt-5" />
       </motion.div>
 
