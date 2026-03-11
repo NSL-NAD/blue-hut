@@ -9,6 +9,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
+  Legend,
   ResponsiveContainer,
 } from 'recharts'
 import {
@@ -16,6 +17,8 @@ import {
   FOOT_TRAFFIC_STATS,
   AVG_ORDER_VALUE,
   BLENDED_MARGIN,
+  MERCH_AVG_ORDER,
+  MERCH_MARGIN,
 } from '@/lib/revenueData'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 
@@ -31,13 +34,14 @@ const FIXED_REV_SHARE_PCT = 20
 export default function RevenueModel() {
   const [convRate, setConvRate] = useState(25)
   const [opsCost, setOpsCost] = useState(500)
+  const [merchConvRate, setMerchConvRate] = useState(5)
 
   const monthlyData = useMemo(
-    () => calculateMonthlyData(convRate, FIXED_REV_SHARE_PCT, opsCost),
-    [convRate, opsCost]
+    () => calculateMonthlyData(convRate, FIXED_REV_SHARE_PCT, opsCost, merchConvRate),
+    [convRate, opsCost, merchConvRate]
   )
 
-  const annualGross = monthlyData.reduce((s, m) => s + m.monthlyRevenue, 0)
+  const annualGross = monthlyData.reduce((s, m) => s + m.monthlyRevenue + m.monthlyMerchRevenue, 0)
   const annualNet = monthlyData.reduce((s, m) => s + m.monthlyNetProfit, 0)
 
   return (
@@ -125,12 +129,12 @@ export default function RevenueModel() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Conversion Rate */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Food Conversion Rate */}
           <div>
             <div className="flex justify-between mb-3">
               <span className="font-mono text-xs" style={{ color: 'var(--text-secondary)' }}>
-                Conversion Rate
+                Food Conversion
               </span>
               <span className="font-mono text-sm font-bold" style={{ color: 'var(--neon-cyan)' }}>
                 {convRate}%
@@ -148,6 +152,31 @@ export default function RevenueModel() {
             <div className="flex justify-between mt-2">
               <span className="font-mono text-[0.6rem]" style={{ color: 'var(--text-dim)' }}>0%</span>
               <span className="font-mono text-[0.6rem]" style={{ color: 'var(--text-dim)' }}>50%</span>
+            </div>
+          </div>
+
+          {/* Merch Conversion Rate */}
+          <div>
+            <div className="flex justify-between mb-3">
+              <span className="font-mono text-xs" style={{ color: 'var(--text-secondary)' }}>
+                Merch Conversion
+              </span>
+              <span className="font-mono text-sm font-bold" style={{ color: 'var(--neon-yellow)' }}>
+                {merchConvRate}%
+              </span>
+            </div>
+            <input
+              type="range"
+              min={0}
+              max={25}
+              step={1}
+              value={merchConvRate}
+              onChange={(e) => setMerchConvRate(Number(e.target.value))}
+              className="w-full"
+            />
+            <div className="flex justify-between mt-2">
+              <span className="font-mono text-[0.6rem]" style={{ color: 'var(--text-dim)' }}>0%</span>
+              <span className="font-mono text-[0.6rem]" style={{ color: 'var(--text-dim)' }}>25%</span>
             </div>
           </div>
 
@@ -246,9 +275,9 @@ export default function RevenueModel() {
             />
             <Tooltip
               cursor={false}
-              formatter={(value) => [
+              formatter={(value, name) => [
                 `$${Number(value).toLocaleString()}`,
-                'Revenue',
+                name,
               ]}
               contentStyle={{
                 backgroundColor: 'var(--bg-elevated)',
@@ -260,12 +289,29 @@ export default function RevenueModel() {
                 boxShadow: 'var(--shadow-cyan)',
               }}
             />
+            <Legend
+              wrapperStyle={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '11px',
+                color: 'var(--text-secondary)',
+                paddingTop: '12px',
+              }}
+            />
             <Bar
               dataKey="monthlyRevenue"
+              name="Food & Bev"
+              stackId="a"
               fill="#00F0FF"
-              radius={[6, 6, 0, 0]}
               opacity={0.85}
-              activeBar={{ fill: '#FF2D7B', opacity: 1 }}
+              radius={[0, 0, 0, 0]}
+            />
+            <Bar
+              dataKey="monthlyMerchRevenue"
+              name="Merch"
+              stackId="a"
+              fill="#FFD600"
+              opacity={0.90}
+              radius={[6, 6, 0, 0]}
             />
           </BarChart>
         </ResponsiveContainer>
@@ -295,10 +341,38 @@ export default function RevenueModel() {
           }}
         >
           <span className="font-mono text-xs" style={{ color: 'var(--text-secondary)' }}>
-            Margin
+            Food Margin
           </span>
           <span className="font-mono text-sm font-bold" style={{ color: 'var(--neon-cyan)' }}>
             {(BLENDED_MARGIN * 100).toFixed(1)}%
+          </span>
+        </div>
+        <div
+          className="flex items-center gap-2 px-5 py-2.5 rounded-full"
+          style={{
+            background: 'var(--bg-glass)',
+            border: '1px solid rgba(255,255,255,0.06)',
+          }}
+        >
+          <span className="font-mono text-xs" style={{ color: 'var(--text-secondary)' }}>
+            Merch Avg Order
+          </span>
+          <span className="font-mono text-sm font-bold" style={{ color: 'var(--neon-yellow)' }}>
+            ${MERCH_AVG_ORDER.toFixed(2)}
+          </span>
+        </div>
+        <div
+          className="flex items-center gap-2 px-5 py-2.5 rounded-full"
+          style={{
+            background: 'var(--bg-glass)',
+            border: '1px solid rgba(255,255,255,0.06)',
+          }}
+        >
+          <span className="font-mono text-xs" style={{ color: 'var(--text-secondary)' }}>
+            Merch Margin
+          </span>
+          <span className="font-mono text-sm font-bold" style={{ color: 'var(--neon-yellow)' }}>
+            {(MERCH_MARGIN * 100).toFixed(0)}%
           </span>
         </div>
       </div>

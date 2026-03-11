@@ -27,6 +27,24 @@ export const AVG_COGS = MENU_ITEMS.reduce(
 )
 export const BLENDED_MARGIN = 1 - AVG_COGS / AVG_ORDER_VALUE
 
+// Merch items — $3 stickers / $12 tote / $35 tee, all 30% margin
+export interface MerchItem {
+  name: string
+  price: number
+  margin: number
+  mix: number // share of merch transactions
+}
+export const MERCH_ITEMS: MerchItem[] = [
+  { name: 'Sticker', price: 3, margin: 0.30, mix: 0.60 },
+  { name: 'Tote', price: 12, margin: 0.30, mix: 0.25 },
+  { name: 'Tee', price: 35, margin: 0.30, mix: 0.15 },
+]
+export const MERCH_AVG_ORDER = MERCH_ITEMS.reduce(
+  (sum, item) => sum + item.price * item.mix,
+  0
+) // ≈ $10.05 blended
+export const MERCH_MARGIN = 0.30
+
 export type SeasonType = 'summer' | 'spring' | 'fall' | 'winter'
 
 export interface MonthData {
@@ -88,24 +106,37 @@ export const FOOT_TRAFFIC_STATS = [
 export function calculateMonthlyData(
   conversionRate: number,
   revSharePct: number,
-  dailyOpsCost: number
+  dailyOpsCost: number,
+  merchConvRate: number = 0
 ) {
   return MONTHS.map((m) => {
-    const dailyCustomers = Math.round(m.dailyTraffic * (conversionRate / 100))
-    const dailyRevenue = dailyCustomers * AVG_ORDER_VALUE
-    const dailyCogs = dailyCustomers * AVG_COGS
+    // Food & beverage
+    const dailyFoodCustomers = Math.round(m.dailyTraffic * (conversionRate / 100))
+    const dailyFoodRevenue = dailyFoodCustomers * AVG_ORDER_VALUE
+    const dailyFoodCogs = dailyFoodCustomers * AVG_COGS
 
-    const monthlyRevenue = dailyRevenue * m.opDays
-    const monthlyCogs = dailyCogs * m.opDays
+    // Merch
+    const dailyMerchCustomers = Math.round(m.dailyTraffic * (merchConvRate / 100))
+    const dailyMerchRevenue = dailyMerchCustomers * MERCH_AVG_ORDER
+    const dailyMerchProfit = dailyMerchRevenue * MERCH_MARGIN
+
+    const monthlyFoodRevenue = dailyFoodRevenue * m.opDays
+    const monthlyFoodCogs = dailyFoodCogs * m.opDays
+    const monthlyMerchRevenue = dailyMerchRevenue * m.opDays
+    const monthlyMerchProfit = dailyMerchProfit * m.opDays
     const monthlyOpsCost = dailyOpsCost * m.opDays
-    const monthlyNetProfit = monthlyRevenue - monthlyCogs - monthlyOpsCost
+
+    const monthlyRevenue = monthlyFoodRevenue + monthlyMerchRevenue
+    const monthlyNetProfit =
+      (monthlyFoodRevenue - monthlyFoodCogs) + monthlyMerchProfit - monthlyOpsCost
     const monthlyRevShare = monthlyRevenue * (revSharePct / 100)
 
     return {
       ...m,
-      dailyCustomers,
-      monthlyRevenue: Math.round(monthlyRevenue),
-      monthlyCogs: Math.round(monthlyCogs),
+      dailyCustomers: dailyFoodCustomers,
+      monthlyRevenue: Math.round(monthlyFoodRevenue),
+      monthlyMerchRevenue: Math.round(monthlyMerchRevenue),
+      monthlyCogs: Math.round(monthlyFoodCogs),
       monthlyOpsCost: Math.round(monthlyOpsCost),
       monthlyNetProfit: Math.round(monthlyNetProfit),
       monthlyRevShare: Math.round(monthlyRevShare),
