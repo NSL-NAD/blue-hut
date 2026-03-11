@@ -39,7 +39,7 @@ export default function MenuItems() {
   const menu = season === 'summer' ? summerMenu : winterMenu
 
   return (
-    <SectionWrapper sectionId="menu-items" bg="dark">
+    <SectionWrapper sectionId="menu-items" bg="accent">
       <AnimatePresence mode="wait">
         <MenuBoard
           key={season}

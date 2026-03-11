@@ -4,34 +4,42 @@ import { ReactNode } from 'react'
 interface SectionWrapperProps {
   children: ReactNode
   sectionId: string
-  bg?: 'dark' | 'light'
+  bg?: 'cream' | 'white' | 'accent' | 'dark'
   className?: string
-  allowScroll?: boolean
+}
+
+const bgMap = {
+  cream: 'var(--bg-primary)',
+  white: 'var(--bg-secondary)',
+  accent: 'var(--bg-accent)',
+  dark: 'var(--accent-5)',
 }
 
 export default function SectionWrapper({
   children,
   sectionId,
-  bg = 'dark',
+  bg = 'cream',
   className = '',
-  allowScroll = false,
 }: SectionWrapperProps) {
+  const isDark = bg === 'dark'
+
   return (
-    <section
+    <div
       data-section={sectionId}
-      data-section-bg={bg}
       className={`
-        relative w-full
-        ${allowScroll ? 'min-h-[100dvh] overflow-y-auto custom-scrollbar' : 'h-[100dvh] overflow-hidden'}
-        flex flex-col items-center justify-center
-        px-5 py-12 md:px-8 md:py-16
-        transition-theme
+        relative w-full min-h-[100dvh]
+        flex flex-col justify-center
+        px-5 py-10 md:px-8 md:py-14
         ${className}
       `}
+      style={{
+        backgroundColor: bgMap[bg],
+        color: isDark ? 'var(--text-on-dark)' : 'var(--text-primary)',
+      }}
     >
-      <div className={`w-full max-w-5xl mx-auto ${allowScroll ? '' : 'h-full flex flex-col justify-center'}`}>
+      <div className="w-full max-w-5xl mx-auto">
         {children}
       </div>
-    </section>
+    </div>
   )
 }

@@ -1,78 +1,67 @@
 'use client'
-import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 
-const SECTION_LABELS = [
-  'Hero',
-  'Overview',
-  'Menu Concept',
-  'Menu Items',
-  'Community',
-  'Marketing',
-  'Revenue Model',
-  'Sublease',
-  'About',
-  'Close',
+const LABELS = [
+  'Hero', 'Overview', 'Menu Concept', 'Menu Items', 'Community',
+  'Marketing', 'Revenue', 'Sublease', 'About', 'Close',
 ]
 
-interface DotNavProps {
-  currentSection: number
-  onNavigate: (index: number) => void
-}
+export default function DotNav() {
+  const [active, setActive] = useState(0)
+  const [hovered, setHovered] = useState<number | null>(null)
 
-export default function DotNav({ currentSection, onNavigate }: DotNavProps) {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = parseInt(entry.target.id.replace('section-', ''), 10)
+            if (!isNaN(idx)) setActive(idx)
+          }
+        })
+      },
+      { threshold: 0.4 }
+    )
+    for (let i = 0; i < 10; i++) {
+      const el = document.getElementById(`section-${i}`)
+      if (el) observer.observe(el)
+    }
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <nav
-      className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col items-end gap-3"
+      className="fixed right-5 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col items-end gap-2.5"
       aria-label="Section navigation"
     >
-      {SECTION_LABELS.map((label, i) => (
+      {LABELS.map((label, i) => (
         <div
           key={label}
           className="relative flex items-center"
-          onMouseEnter={() => setHoveredIndex(i)}
-          onMouseLeave={() => setHoveredIndex(null)}
+          onMouseEnter={() => setHovered(i)}
+          onMouseLeave={() => setHovered(null)}
         >
-          {/* Tooltip */}
-          {hoveredIndex === i && (
-            <motion.span
-              initial={{ opacity: 0, x: 8 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 8 }}
-              className="absolute right-8 whitespace-nowrap font-mono text-[0.7rem] font-light tracking-wider"
-              style={{ color: 'var(--text-primary)' }}
+          {hovered === i && (
+            <span
+              className="absolute right-7 whitespace-nowrap font-mono text-[0.6rem] font-medium tracking-wider px-2 py-0.5 rounded-md"
+              style={{ color: 'var(--text-primary)', background: 'var(--bg-card)', boxShadow: 'var(--shadow)' }}
             >
               {label}
-            </motion.span>
+            </span>
           )}
-
-          {/* Dot */}
           <button
-            onClick={() => onNavigate(i)}
+            onClick={() => document.getElementById(`section-${i}`)?.scrollIntoView({ behavior: 'smooth' })}
             aria-label={`Go to ${label}`}
-            aria-current={i === currentSection ? 'true' : undefined}
-            className="relative flex items-center justify-center w-5 h-5 group"
+            className="flex items-center justify-center w-4 h-4"
           >
-            <motion.span
-              animate={{
-                width: i === currentSection ? 10 : 6,
-                height: i === currentSection ? 10 : 6,
-                backgroundColor:
-                  i === currentSection
-                    ? 'var(--neon-teal)'
-                    : 'transparent',
-                borderColor:
-                  i === currentSection
-                    ? 'var(--neon-teal)'
-                    : 'var(--text-primary)',
-                opacity: i === currentSection ? 1 : 0.4,
-              }}
-              transition={{ duration: 0.2 }}
-              className="rounded-full border"
+            <span
+              className="rounded-full transition-all duration-200"
               style={{
-                borderWidth: i === currentSection ? 0 : 1,
+                width: i === active ? 10 : 6,
+                height: i === active ? 10 : 6,
+                background: i === active ? 'var(--accent-1)' : 'transparent',
+                border: i === active ? 'none' : '1.5px solid var(--text-secondary)',
+                opacity: i === active ? 1 : 0.3,
               }}
             />
           </button>

@@ -30,44 +30,45 @@ const people = [
 
 export default function AboutNSquared() {
   return (
-    <SectionWrapper sectionId="about" bg="dark">
+    <SectionWrapper sectionId="about" bg="accent">
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="mb-8"
+        className="mb-6"
       >
-        <h2 className="font-display text-section-headline">
+        <h2 className="font-display text-headline">
           About N-Squared
         </h2>
+        <div className="geo-stripe w-20 mt-4" />
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {people.map((person, i) => (
           <motion.div
             key={person.name}
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: i * 0.1 }}
-            className="card-base flex flex-col items-center text-center"
+            className="card-pop flex flex-col items-center text-center"
           >
             {/* Photo placeholder */}
             <div
-              className="w-28 h-28 rounded-xl mb-4 flex items-center justify-center overflow-hidden"
+              className="w-24 h-24 rounded-2xl mb-4 flex items-center justify-center overflow-hidden"
               style={{
-                backgroundColor: 'var(--bg-card-alt)',
-                border: '2px solid var(--border-pop)',
+                backgroundColor: 'var(--bg-accent)',
+                border: '3px solid var(--border-pop)',
               }}
             >
-              <span className="font-display text-3xl opacity-30">
+              <span className="font-display text-2xl" style={{ color: 'var(--accent-1)', opacity: 0.5 }}>
                 {person.initials}
               </span>
             </div>
 
-            <h3 className="font-body text-lg font-bold mb-2">
+            <h3 className="font-display text-xl font-bold mb-2">
               {person.name}
             </h3>
-            <p className="font-body text-sm leading-relaxed opacity-80 mb-4">
+            <p className="font-body text-sm leading-relaxed mb-4" style={{ color: 'var(--text-secondary)' }}>
               {person.bio}
             </p>
 
@@ -78,8 +79,8 @@ export default function AboutNSquared() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1 font-mono text-xs hover:opacity-100 opacity-60 transition-opacity"
-                  style={{ color: 'var(--neon-teal)' }}
+                  className="flex items-center gap-1 font-mono text-xs hover:opacity-100 opacity-70 transition-opacity"
+                  style={{ color: 'var(--accent-2)' }}
                 >
                   <ExternalLink size={10} />
                   {link.label}

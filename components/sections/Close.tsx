@@ -11,12 +11,12 @@ export default function Close() {
 
   return (
     <SectionWrapper sectionId="close" bg="dark">
-      <div className="flex flex-col items-center justify-center text-center h-full">
+      <div className="flex flex-col items-center justify-center text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="font-display text-section-headline mb-6 glow-teal"
+          className="font-display text-headline mb-6 text-white"
         >
           Let&rsquo;s Build Something Good
         </motion.h2>
@@ -25,7 +25,7 @@ export default function Close() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="font-body text-base md:text-lg leading-relaxed opacity-80 max-w-xl mb-10"
+          className="font-body text-base md:text-lg leading-relaxed max-w-xl mb-10 text-white/80"
         >
           McKinley Beach deserves a destination, not just a snack stand. This is
           the start of a conversation — and we think it&rsquo;s worth having.
@@ -42,13 +42,12 @@ export default function Close() {
             href="mailto:nsquaredlifestyle@gmail.com"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
-            className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg border-2 font-mono text-sm uppercase tracking-wider transition-all duration-200"
+            className="flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-mono text-sm uppercase tracking-wider transition-all duration-200 text-white"
             style={{
-              borderColor: 'var(--border-pop)',
-              color: 'var(--neon-teal)',
+              backgroundColor: 'var(--accent-1)',
             }}
           >
-            <Mail size={16} />
+            <Mail size={18} />
             Get in Touch
           </motion.a>
 
@@ -57,13 +56,13 @@ export default function Close() {
             onClick={handleDownload}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
-            className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg border-2 font-mono text-sm uppercase tracking-wider transition-all duration-200"
+            className="flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl border-2 font-mono text-sm uppercase tracking-wider transition-all duration-200"
             style={{
-              borderColor: 'var(--border-pop)',
-              color: 'var(--neon-teal)',
+              borderColor: 'rgba(255,255,255,0.3)',
+              color: 'white',
             }}
           >
-            <Download size={16} />
+            <Download size={18} />
             Download Proposal
           </motion.button>
         </motion.div>
@@ -73,7 +72,7 @@ export default function Close() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.4 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="absolute bottom-8 font-mono text-[0.65rem] tracking-wider"
+          className="mt-16 font-mono text-[0.65rem] tracking-wider text-white/40"
         >
           Confidential — For Discussion Purposes Only | N-Squared | March 2026
         </motion.p>
