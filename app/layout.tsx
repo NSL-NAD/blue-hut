@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Syne, Outfit, Space_Mono } from 'next/font/google'
 import './globals.css'
+import Providers from '@/components/layout/Providers'
 
 const display = Syne({
   subsets: ['latin'],
@@ -36,7 +37,9 @@ export default function RootLayout({
       <body
         className={`${display.variable} ${body.variable} ${mono.variable} antialiased`}
       >
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   )

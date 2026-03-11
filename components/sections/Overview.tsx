@@ -1,12 +1,13 @@
 'use client'
 import { motion } from 'framer-motion'
-import { MapPin, Zap, Users } from 'lucide-react'
+import { MapPin, Zap, Users, ShieldCheck } from 'lucide-react'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 
 const highlights = [
   { icon: MapPin, label: 'Prime Lakefront Location' },
   { icon: Zap, label: 'Currently Underutilized' },
-  { icon: Users, label: 'Community-First Model' },
+  { icon: Users, label: 'Family-Friendly & Community-First' },
+  { icon: ShieldCheck, label: 'Hands-Off for Partners' },
 ]
 
 export default function Overview() {
@@ -47,10 +48,11 @@ export default function Overview() {
           style={{ color: 'var(--text-secondary)' }}
         >
           McKinley Beach&rsquo;s concession stand &mdash; the &ldquo;Blue Hut&rdquo; &mdash;
-          is an untapped opportunity. Steps from one of Milwaukee&rsquo;s most beloved
-          lakefront destinations, we&rsquo;re proposing a collaborative model that
-          activates the space year-round, generates revenue for all parties, and
-          builds something the community genuinely loves.
+          is an untapped opportunity. We&rsquo;re proposing a hands-off, trusted
+          partnership that activates this underutilized space year-round. Family-friendly
+          programming, community-first design, and a self-sustaining operation &mdash;
+          all with zero operational lift from existing partners. At minimum, a cost
+          reduction. At best, a meaningful new revenue stream.
         </motion.p>
 
         {/* Highlight pills */}

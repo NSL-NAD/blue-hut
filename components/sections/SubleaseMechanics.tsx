@@ -7,35 +7,35 @@ const mechanics = [
     number: '01',
     title: 'Time & Materials',
     description:
-      'N-Squared provides time and materials to renovate the concession stand at cost.',
+      'N-Squared covers all time, materials, and labor to renovate the concession stand — at no cost to existing partners.',
     color: 'var(--neon-pink)',
   },
   {
     number: '02',
     title: 'Storage Replacement',
     description:
-      'Partners collaborate on replacing equivalent on-premises storage displaced by the renovation.',
+      'Any storage displaced by renovation is replaced in-kind. A seamless transition with zero disruption to existing operations.',
     color: 'var(--neon-cyan)',
   },
   {
     number: '03',
     title: 'Lease Reduction',
     description:
-      "MKE County Parks offers a reduction in Bartolotta's existing lease in exchange for renovation value delivered.",
+      "Milwaukee County Parks reduces Bartolotta's existing lease proportional to the renovation value delivered — a direct, ongoing cost reduction with no strings attached.",
     color: 'var(--neon-yellow)',
   },
   {
     number: '04',
     title: 'Revenue Share',
     description:
-      'N-Squared and Bartolotta enter a revenue share agreement based on Blue Hut sales.',
+      'Bartolotta earns a passive revenue share from Blue Hut sales. Zero operational involvement required — just meaningful upside from a space that was previously idle.',
     color: 'var(--neon-purple)',
   },
   {
     number: '05',
-    title: 'Sublease (Alternative)',
+    title: 'Sublease',
     description:
-      'As an alternative to rev share, N-Squared subleases the Blue Hut from Bartolotta based on proportional square footage.',
+      'Alternatively, N-Squared subleases the Blue Hut directly from Bartolotta based on proportional square footage. Predictable income, no day-to-day responsibilities.',
     color: 'var(--neon-orange)',
   },
 ]
@@ -55,8 +55,16 @@ export default function SubleaseMechanics() {
         className="mb-10"
       >
         <h2 className="font-display text-headline mb-2">
-          Sublease Mechanics
+          The Deal Structure
         </h2>
+        <p
+          className="font-body text-sm md:text-base leading-relaxed max-w-2xl mb-1"
+          style={{ color: 'var(--text-secondary)' }}
+        >
+          A hands-off, trusted partnership. N-Squared handles everything — Bartolotta
+          and the County benefit from a renovated asset and a new income stream, with
+          zero operational lift.
+        </p>
         <p
           className="font-mono text-[0.7rem] italic"
           style={{ color: 'var(--text-dim)' }}
@@ -68,9 +76,9 @@ export default function SubleaseMechanics() {
 
       {/* Timeline layout */}
       <div className="relative max-w-3xl mx-auto">
-        {/* Vertical gradient line */}
+        {/* Vertical gradient line — starts at center of 01, ends at center of 05 */}
         <div
-          className="absolute left-6 md:left-8 top-0 bottom-0 w-[3px] rounded-full hidden md:block"
+          className="absolute left-6 md:left-8 top-6 md:top-8 bottom-6 md:bottom-8 w-[3px] rounded-full hidden md:block"
           style={{
             background: 'var(--gradient-sunset)',
             boxShadow: '0 0 12px rgba(255,45,123,0.2)',
@@ -85,9 +93,9 @@ export default function SubleaseMechanics() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: i * 0.1, ease: 'easeOut' }}
-              className="flex items-start gap-5 md:gap-8"
+              className="flex items-center gap-5 md:gap-8"
             >
-              {/* Numbered circle */}
+              {/* Numbered circle — center-aligned with card */}
               <div
                 className="shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center font-display text-lg md:text-xl font-bold relative z-10"
                 style={{

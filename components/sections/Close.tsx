@@ -1,5 +1,6 @@
 'use client'
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 import { Mail, Download } from 'lucide-react'
 
 export default function Close() {
@@ -7,6 +8,9 @@ export default function Close() {
     const { exportProposalPDF } = await import('@/lib/pdf')
     await exportProposalPDF()
   }
+
+  const h2Ref = useRef<HTMLHeadingElement>(null)
+  const isInView = useInView(h2Ref, { once: true, amount: 0.5 })
 
   return (
     <div
@@ -26,15 +30,18 @@ export default function Close() {
         className="flex-1 flex flex-col items-center justify-center text-center relative z-20 px-6 md:px-12"
         style={{ paddingBottom: 'calc(260px + 40px)' }}
       >
-        <motion.h2
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.7 }}
-          className="font-display text-headline mb-6 neon-text-pink"
+        <h2
+          ref={h2Ref}
+          className="font-display text-headline mb-6"
+          style={{
+            color: 'var(--neon-pink)',
+            opacity: isInView ? undefined : 0,
+            animation: isInView ? 'neon-flicker 2s ease-in forwards' : 'none',
+          }}
         >
-          Let&rsquo;s Build Something Good
-        </motion.h2>
+          Let&rsquo;s Build
+          <span className="block">Something Good</span>
+        </h2>
 
         <motion.p
           initial={{ opacity: 0, y: 16 }}

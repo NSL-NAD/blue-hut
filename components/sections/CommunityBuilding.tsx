@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
-import { Truck, Music, Disc3, Camera, Store } from 'lucide-react'
+import { Truck, Music, Disc3, Camera, Store, ShoppingBag } from 'lucide-react'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 
 const cards = [
@@ -8,35 +8,42 @@ const cards = [
     icon: Disc3,
     title: 'Public Disco',
     description:
-      'Vancouver-inspired, alcohol-free, family-friendly community events. Live music in the park, Saturdays 2–5 PM.',
+      'Vancouver-inspired, alcohol-free, family-friendly community events. Live music in the park, Saturdays 2–5 PM. All ages welcome.',
     color: 'var(--neon-pink)',
   },
   {
     icon: Truck,
     title: 'Food Truck Partnerships',
     description:
-      'Rotating food truck lineup in the beach lot on weekends.',
+      'Rotating food truck lineup in the beach lot on weekends — curated local vendors that complement the Blue Hut experience.',
     color: 'var(--neon-cyan)',
   },
   {
     icon: Music,
     title: 'Roller Skating Rentals',
-    description: 'Inline skate rentals along the lakefront path.',
+    description: 'Inline skate rentals along the lakefront path. A throwback activity the whole family can enjoy.',
     color: 'var(--neon-yellow)',
   },
   {
     icon: Camera,
     title: 'Sunrise Live Stream',
     description:
-      'Fixed camera streaming sunrise to social channels daily.',
+      'Fixed camera streaming sunrise to social channels daily — free community content that keeps McKinley Beach top of mind year-round.',
     color: 'var(--neon-purple)',
   },
   {
     icon: Store,
     title: 'Pop-up Collabs',
     description:
-      'Collectivo, Blooming Lotus, Bartolotta, and other MKE staples rotating through.',
+      'Collectivo, Blooming Lotus, Bartolotta, and other MKE staples rotating through — bringing new audiences to the beach.',
     color: 'var(--neon-orange)',
+  },
+  {
+    icon: ShoppingBag,
+    title: 'Blue Hut Merch',
+    description:
+      'Shirts, stickers, and totes — Blue Hut branded goods that let beachgoers take a piece of the vibe home. A community badge of honor.',
+    color: 'var(--neon-pink)',
   },
 ]
 
@@ -65,18 +72,20 @@ export default function CommunityBuilding() {
         className="mb-10"
       >
         <h2 className="font-display text-headline mb-3">
-          Community, All Summer Long
+          Built for the Community
         </h2>
         <p
           className="font-body text-base md:text-lg leading-relaxed max-w-2xl"
           style={{ color: 'var(--text-secondary)' }}
         >
-          McKinley Beach already draws the crowd. The Blue Hut becomes the heartbeat.
+          McKinley Beach already draws the crowd. The Blue Hut becomes the heartbeat —
+          a family-friendly hub where Milwaukeeans gather, create memories, and come
+          back all summer long.
         </p>
         <div className="neon-stripe w-20 mt-5" />
       </motion.div>
 
-      {/* 3 + 2 grid layout */}
+      {/* 3 + 3 grid layout for 6 cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-5">
         {cards.slice(0, 3).map((card, i) => (
           <motion.div
@@ -109,7 +118,7 @@ export default function CommunityBuilding() {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-3xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {cards.slice(3).map((card, i) => (
           <motion.div
             key={card.title}

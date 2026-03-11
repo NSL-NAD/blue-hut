@@ -25,19 +25,20 @@ function formatCurrency(val: number): string {
   return `$${val.toLocaleString()}`
 }
 
+// Rev share fixed internally — not exposed as a user control
+const FIXED_REV_SHARE_PCT = 20
+
 export default function RevenueModel() {
   const [convRate, setConvRate] = useState(8)
-  const [revSharePct, setRevSharePct] = useState(20)
   const [opsCost, setOpsCost] = useState(1200)
 
   const monthlyData = useMemo(
-    () => calculateMonthlyData(convRate, revSharePct, opsCost),
-    [convRate, revSharePct, opsCost]
+    () => calculateMonthlyData(convRate, FIXED_REV_SHARE_PCT, opsCost),
+    [convRate, opsCost]
   )
 
   const annualGross = monthlyData.reduce((s, m) => s + m.monthlyRevenue, 0)
   const annualNet = monthlyData.reduce((s, m) => s + m.monthlyNetProfit, 0)
-  const annualRevShare = monthlyData.reduce((s, m) => s + m.monthlyRevShare, 0)
 
   return (
     <SectionWrapper sectionId="revenue-model" bg="deep">
@@ -109,7 +110,7 @@ export default function RevenueModel() {
         ))}
       </div>
 
-      {/* Sliders */}
+      {/* Model Controls — 2 sliders */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -124,7 +125,7 @@ export default function RevenueModel() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Conversion Rate */}
           <div>
             <div className="flex justify-between mb-3">
@@ -147,31 +148,6 @@ export default function RevenueModel() {
             <div className="flex justify-between mt-2">
               <span className="font-mono text-[0.6rem]" style={{ color: 'var(--text-dim)' }}>2%</span>
               <span className="font-mono text-[0.6rem]" style={{ color: 'var(--text-dim)' }}>25%</span>
-            </div>
-          </div>
-
-          {/* Rev Share */}
-          <div>
-            <div className="flex justify-between mb-3">
-              <span className="font-mono text-xs" style={{ color: 'var(--text-secondary)' }}>
-                N-Squared Rev Share
-              </span>
-              <span className="font-mono text-sm font-bold" style={{ color: 'var(--neon-cyan)' }}>
-                {revSharePct}%
-              </span>
-            </div>
-            <input
-              type="range"
-              min={5}
-              max={40}
-              step={5}
-              value={revSharePct}
-              onChange={(e) => setRevSharePct(Number(e.target.value))}
-              className="w-full"
-            />
-            <div className="flex justify-between mt-2">
-              <span className="font-mono text-[0.6rem]" style={{ color: 'var(--text-dim)' }}>5%</span>
-              <span className="font-mono text-[0.6rem]" style={{ color: 'var(--text-dim)' }}>40%</span>
             </div>
           </div>
 
@@ -202,8 +178,8 @@ export default function RevenueModel() {
         </div>
       </motion.div>
 
-      {/* Annual Summary */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      {/* Annual Summary — 3 cards, no rev share */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
         <div className="card-stat">
           <p className="label-mono mb-2 text-[0.6rem]" style={{ color: 'var(--text-secondary)' }}>
             Annual Gross
@@ -225,14 +201,6 @@ export default function RevenueModel() {
         </div>
         <div className="card-stat">
           <p className="label-mono mb-2 text-[0.6rem]" style={{ color: 'var(--text-secondary)' }}>
-            N-Squared Share
-          </p>
-          <p className="font-display text-2xl font-bold" style={{ color: 'var(--neon-pink)' }}>
-            {formatCurrency(annualRevShare)}
-          </p>
-        </div>
-        <div className="card-stat">
-          <p className="label-mono mb-2 text-[0.6rem]" style={{ color: 'var(--text-secondary)' }}>
             Blended Margin
           </p>
           <p className="font-display text-2xl font-bold" style={{ color: 'var(--neon-yellow)' }}>
@@ -241,7 +209,7 @@ export default function RevenueModel() {
         </div>
       </div>
 
-      {/* Chart */}
+      {/* Chart — bar changes color on hover, no background hover state */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -277,6 +245,7 @@ export default function RevenueModel() {
               axisLine={{ stroke: 'rgba(255,255,255,0.08)' }}
             />
             <Tooltip
+              cursor={false}
               formatter={(value) => [
                 `$${Number(value).toLocaleString()}`,
                 'Revenue',
@@ -293,9 +262,10 @@ export default function RevenueModel() {
             />
             <Bar
               dataKey="monthlyRevenue"
-              fill="var(--neon-cyan)"
+              fill="#00F0FF"
               radius={[6, 6, 0, 0]}
               opacity={0.85}
+              activeBar={{ fill: '#FF2D7B', opacity: 1 }}
             />
           </BarChart>
         </ResponsiveContainer>

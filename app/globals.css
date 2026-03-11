@@ -20,10 +20,10 @@
   --neon-orange: #FF6B2D;
   --neon-purple: #B026FF;
 
-  /* Text */
-  --text-primary: #F0F0FF;
-  --text-secondary: #8888AA;
-  --text-dim: #555577;
+  /* Text — boosted contrast */
+  --text-primary: #FFFFFF;
+  --text-secondary: #AAAACC;
+  --text-dim: #666688;
 
   /* Gradients */
   --gradient-sunset: linear-gradient(135deg, #FF2D7B 0%, #FF6B2D 50%, #FFD600 100%);
@@ -393,3 +393,177 @@ input[type="range"]::-moz-range-thumb {
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--neon-pink); border-radius: 3px; }
+
+/* ============================================
+   TEXT SELECTION HIGHLIGHT
+   ============================================ */
+::selection {
+  background: #AAFF00;
+  color: #0B0B1A;
+}
+
+/* ============================================
+   NEON SIGN FLICKER ANIMATION
+   ============================================ */
+@keyframes neon-flicker {
+  0%   { opacity: 0; text-shadow: none; }
+  8%   { opacity: 1; text-shadow: 0 0 7px rgba(255,45,123,0.9), 0 0 20px rgba(255,45,123,0.6); }
+  10%  { opacity: 0.05; text-shadow: none; }
+  14%  { opacity: 1; text-shadow: 0 0 7px rgba(255,45,123,0.9), 0 0 20px rgba(255,45,123,0.6); }
+  19%  { opacity: 0.4; text-shadow: none; }
+  22%  { opacity: 1; text-shadow: 0 0 7px rgba(255,45,123,0.9), 0 0 20px rgba(255,45,123,0.6), 0 0 40px rgba(255,45,123,0.3); }
+  27%  { opacity: 0.85; }
+  30%  { opacity: 1; }
+  100% { opacity: 1; text-shadow: 0 0 7px rgba(255,45,123,0.9), 0 0 20px rgba(255,45,123,0.6), 0 0 40px rgba(255,45,123,0.3), 0 0 80px rgba(255,45,123,0.1); }
+}
+
+/* ============================================
+   LIGHT MODE — Summer Sunrise Theme
+   ============================================ */
+[data-theme="light"] {
+  --bg-deep:    #FFF5E4;
+  --bg-surface: #FFECD0;
+  --bg-elevated: #FFE0B8;
+  --bg-glass:   rgba(255, 218, 160, 0.55);
+
+  --neon-pink:   #C8002A;
+  --neon-cyan:   #0072CF;
+  --neon-yellow: #D49000;
+  --neon-orange: #C44B00;
+  --neon-purple: #7000CC;
+
+  --text-primary:   #1C0800;
+  --text-secondary: #6B3A18;
+  --text-dim:       #AA7A50;
+
+  --gradient-sunset:   linear-gradient(135deg, #FF6060 0%, #FF8E53 50%, #FFD060 100%);
+  --gradient-sunset-h: linear-gradient(90deg, #FF6060 0%, #FF8E53 50%, #FFD060 100%);
+
+  --chart-1: #0072CF;
+  --chart-2: #C8002A;
+  --chart-3: #D49000;
+  --chart-4: #7000CC;
+
+  --shadow-soft: 0 4px 30px rgba(100, 50, 0, 0.15);
+  --shadow-pink: 0 0 20px rgba(200, 0, 42, 0.2), 0 0 60px rgba(200, 0, 42, 0.07);
+  --shadow-cyan: 0 0 20px rgba(0, 114, 207, 0.2), 0 0 60px rgba(0, 114, 207, 0.07);
+}
+
+[data-theme="light"] ::selection {
+  background: #FF3B4E;
+  color: #FFFFFF;
+}
+
+[data-theme="light"] .star-field {
+  display: none;
+}
+
+[data-theme="light"] .dot-grid {
+  opacity: 0.30;
+}
+
+[data-theme="light"] .dot-grid-pink {
+  opacity: 0.25;
+}
+
+[data-theme="light"] .synthwave-grid {
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 114, 207, 0.09) 0px,
+      rgba(0, 114, 207, 0.09) 1px,
+      transparent 1px,
+      transparent 50px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 114, 207, 0.07) 0px,
+      rgba(0, 114, 207, 0.07) 1px,
+      transparent 1px,
+      transparent 35px
+    );
+}
+
+[data-theme="light"] .card-glass {
+  background: rgba(255, 224, 175, 0.60);
+  border-color: rgba(120, 60, 10, 0.10);
+}
+
+[data-theme="light"] .card-glass:hover {
+  border-color: rgba(0, 114, 207, 0.30);
+  box-shadow:
+    0 0 20px rgba(0, 114, 207, 0.15),
+    0 0 50px rgba(0, 114, 207, 0.06),
+    0 12px 40px rgba(100, 50, 0, 0.12);
+  transform: translateY(-4px);
+}
+
+[data-theme="light"] .card-neon {
+  background: rgba(255, 224, 175, 0.60);
+  border-color: rgba(200, 0, 42, 0.12);
+}
+
+[data-theme="light"] .card-neon:hover {
+  border-color: rgba(200, 0, 42, 0.38);
+  box-shadow:
+    0 0 20px rgba(200, 0, 42, 0.2),
+    0 0 50px rgba(200, 0, 42, 0.08),
+    0 12px 40px rgba(100, 50, 0, 0.12);
+  transform: translateY(-4px);
+}
+
+[data-theme="light"] .card-stat {
+  background: rgba(255, 224, 175, 0.50);
+  border-color: rgba(120, 60, 10, 0.06);
+}
+
+[data-theme="light"] .card-stat:hover {
+  border-color: rgba(0, 114, 207, 0.22);
+  box-shadow:
+    0 0 16px rgba(0, 114, 207, 0.15),
+    0 0 40px rgba(0, 114, 207, 0.06),
+    0 8px 30px rgba(100, 50, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+[data-theme="light"] .neon-text-pink {
+  color: var(--neon-pink);
+  text-shadow:
+    0 0 7px rgba(200, 0, 42, 0.50),
+    0 0 20px rgba(200, 0, 42, 0.25),
+    0 0 40px rgba(200, 0, 42, 0.12);
+}
+
+[data-theme="light"] .neon-text-cyan {
+  color: var(--neon-cyan);
+  text-shadow:
+    0 0 7px rgba(0, 114, 207, 0.50),
+    0 0 20px rgba(0, 114, 207, 0.25),
+    0 0 40px rgba(0, 114, 207, 0.12);
+}
+
+[data-theme="light"] .neon-stripe {
+  box-shadow: 0 0 10px rgba(200, 0, 42, 0.2);
+}
+
+[data-theme="light"] input[type="range"] {
+  background: var(--bg-elevated);
+  border-color: rgba(120, 60, 10, 0.10);
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: var(--neon-pink);
+}
+
+/* Light mode neon flicker — crimson sunrise variant */
+[data-theme="light"] @keyframes neon-flicker {
+  0%   { opacity: 0; text-shadow: none; }
+  8%   { opacity: 1; text-shadow: 0 0 7px rgba(200,0,42,0.8), 0 0 20px rgba(200,0,42,0.5); }
+  10%  { opacity: 0.05; text-shadow: none; }
+  14%  { opacity: 1; text-shadow: 0 0 7px rgba(200,0,42,0.8), 0 0 20px rgba(200,0,42,0.5); }
+  19%  { opacity: 0.4; text-shadow: none; }
+  22%  { opacity: 1; text-shadow: 0 0 7px rgba(200,0,42,0.8), 0 0 20px rgba(200,0,42,0.5), 0 0 40px rgba(200,0,42,0.25); }
+  27%  { opacity: 0.85; }
+  30%  { opacity: 1; }
+  100% { opacity: 1; text-shadow: 0 0 7px rgba(200,0,42,0.8), 0 0 20px rgba(200,0,42,0.5), 0 0 40px rgba(200,0,42,0.25), 0 0 80px rgba(200,0,42,0.08); }
+}
