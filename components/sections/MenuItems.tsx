@@ -1,8 +1,7 @@
 'use client'
+import { useState } from 'react'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 import MenuBoard from '@/components/ui/MenuBoard'
-import SeasonToggle from '@/components/layout/SeasonToggle'
-import { useSeason } from '@/context/SeasonContext'
 
 const summerMenu = {
   headline: 'Summer Menu',
@@ -33,22 +32,92 @@ const winterMenu = {
     'Menu items for discussion purposes only. Final offerings subject to licensing, vendor agreements, and seasonal demand.',
 }
 
+const menus = { summer: summerMenu, winter: winterMenu }
+type Season = 'summer' | 'winter'
+
 export default function MenuItems() {
-  const { season } = useSeason()
-  const menu = season === 'summer' ? summerMenu : winterMenu
+  const [active, setActive] = useState<Season>('summer')
+  const [hovering, setHovering] = useState(false)
+
+  const front = menus[active]
+  const backKey: Season = active === 'summer' ? 'winter' : 'summer'
+  const back = menus[backKey]
+
+  const swap = () => setActive(backKey)
 
   return (
     <SectionWrapper sectionId="menu-items" bg="surface">
-      {/* Season toggle — top right */}
-      <div className="flex justify-end mb-6">
-        <SeasonToggle />
+      {/* Hint */}
+      <p
+        className="font-mono text-[0.65rem] text-center mb-6 tracking-widest uppercase"
+        style={{ color: 'var(--text-dim)' }}
+      >
+        Click the card behind to switch menus
+      </p>
+
+      {/* Stacked deck — extra padding at bottom-right so back card peeks */}
+      <div
+        className="relative mx-auto"
+        style={{ maxWidth: '672px', paddingBottom: '28px', paddingRight: '28px' }}
+        onMouseEnter={() => setHovering(true)}
+        onMouseLeave={() => setHovering(false)}
+      >
+        {/* Back card — peeking out, click to swap */}
+        <div
+          onClick={swap}
+          style={{
+            position: 'absolute',
+            inset: 0,
+            transform: hovering
+              ? 'translate(22px, 26px) scale(0.975)'
+              : 'translate(12px, 14px) scale(0.97)',
+            transition: 'transform 0.4s cubic-bezier(0.34, 1.4, 0.64, 1)',
+            zIndex: 1,
+            cursor: 'pointer',
+            borderRadius: '16px',
+            overflow: 'hidden',
+          }}
+        >
+          {/* Card body */}
+          <div
+            className="w-full h-full rounded-2xl flex flex-col"
+            style={{
+              backgroundColor: 'var(--bg-elevated)',
+              border: '1px solid rgba(255,255,255,0.07)',
+              boxShadow: 'var(--shadow-soft)',
+            }}
+          >
+            {/* Top stripe */}
+            <div className="h-1 w-full shrink-0" style={{ background: 'var(--gradient-sunset-h)' }} />
+
+            {/* Back card content — just the headline visible */}
+            <div className="flex-1 flex flex-col items-center justify-start pt-8 px-8">
+              <p
+                className="font-display text-headline text-center"
+                style={{ color: 'var(--neon-cyan)', opacity: 0.7 }}
+              >
+                {back.headline}
+              </p>
+              <p
+                className="font-mono text-[0.65rem] mt-3 tracking-widest uppercase"
+                style={{ color: 'var(--text-dim)' }}
+              >
+                tap to flip
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Front card — full MenuBoard */}
+        <div style={{ position: 'relative', zIndex: 10 }}>
+          <MenuBoard
+            headline={front.headline}
+            subhead={front.subhead}
+            items={front.items}
+            disclaimer={front.disclaimer}
+          />
+        </div>
       </div>
-      <MenuBoard
-        headline={menu.headline}
-        subhead={menu.subhead}
-        items={menu.items}
-        disclaimer={menu.disclaimer}
-      />
     </SectionWrapper>
   )
 }
