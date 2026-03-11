@@ -399,6 +399,39 @@ input[type="range"]::-moz-range-thumb {
 ::-webkit-scrollbar-thumb { background: var(--neon-pink); border-radius: 3px; }
 
 /* ============================================
+   COMMUNITY CAROUSEL — Infinite Horizontal Scroll
+   ============================================ */
+.community-carousel {
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(280px, 320px);
+  gap: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+  scrollbar-width: none;
+  padding: 0 24px 8px;
+}
+.community-carousel::-webkit-scrollbar { display: none; }
+.community-carousel > * { scroll-snap-align: start; min-width: 0; }
+
+@media (min-width: 768px) {
+  .community-carousel {
+    padding: 0 48px 8px;
+    grid-auto-columns: minmax(300px, 340px);
+  }
+}
+@media (max-width: 639px) {
+  .community-carousel {
+    grid-auto-columns: minmax(260px, 85vw);
+  }
+}
+
+/* ============================================
    TEXT SELECTION HIGHLIGHT
    ============================================ */
 ::selection {
