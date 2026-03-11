@@ -16,9 +16,9 @@ export default function Hero() {
       data-section="hero"
       className="relative h-[100dvh] w-full flex flex-col items-center justify-center overflow-hidden"
     >
-      {/* Background Image */}
+      {/* Background Image — swaps with theme */}
       <Image
-        src="/blue-hut.jpg"
+        src={theme === 'dark' ? '/blue-hut-night.png' : '/blue-hut-day.png'}
         alt="The Blue Hut at McKinley Beach"
         fill
         className="object-cover"

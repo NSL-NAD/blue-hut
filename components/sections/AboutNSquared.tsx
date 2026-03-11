@@ -1,7 +1,14 @@
 'use client'
 import { motion } from 'framer-motion'
 import { ExternalLink } from 'lucide-react'
+import Image from 'next/image'
 import SectionWrapper from '@/components/ui/SectionWrapper'
+
+const photos = [
+  { src: '/n-squared-001.jpeg', alt: 'N-Squared photo 1' },
+  { src: '/n-squared-002.JPG', alt: 'N-Squared photo 2' },
+  { src: '/n-squared-003.JPG', alt: 'N-Squared photo 3' },
+]
 
 const links = [
   { label: 'nicdemore.com', href: 'https://nicdemore.com' },
@@ -49,25 +56,33 @@ export default function AboutNSquared() {
         transition={{ duration: 0.5, delay: 0.15 }}
         className="card-glass max-w-3xl mx-auto flex flex-col items-center text-center"
       >
-        {/* Photo placeholder with gradient border ring */}
-        <div
-          className="w-32 h-32 rounded-full mb-6 flex items-center justify-center"
-          style={{
-            background: 'var(--gradient-sunset)',
-            padding: '3px',
-          }}
-        >
-          <div
-            className="w-full h-full rounded-full flex items-center justify-center"
-            style={{ backgroundColor: 'var(--bg-elevated)' }}
-          >
-            <span
-              className="font-display text-2xl font-bold"
-              style={{ color: 'var(--neon-pink)', opacity: 0.7 }}
+        {/* Three photos in a horizontal row */}
+        <div className="flex gap-4 md:gap-5 justify-center mb-8 w-full">
+          {photos.map((photo, i) => (
+            <motion.div
+              key={photo.src}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.2 + i * 0.1 }}
+              className="relative rounded-2xl overflow-hidden flex-1 max-w-[200px]"
+              style={{
+                aspectRatio: '4/5',
+                background: 'var(--gradient-sunset)',
+                padding: '3px',
+              }}
             >
-              N²
-            </span>
-          </div>
+              <div className="relative w-full h-full rounded-[14px] overflow-hidden">
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 30vw, 200px"
+                />
+              </div>
+            </motion.div>
+          ))}
         </div>
 
         <h3 className="font-display text-2xl font-bold mb-4">
