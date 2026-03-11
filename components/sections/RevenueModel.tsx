@@ -164,7 +164,7 @@ export default function RevenueModel() {
             <input
               type="range"
               min={0}
-              max={3000}
+              max={1500}
               step={100}
               value={opsCost}
               onChange={(e) => setOpsCost(Number(e.target.value))}
@@ -172,7 +172,7 @@ export default function RevenueModel() {
             />
             <div className="flex justify-between mt-2">
               <span className="font-mono text-[0.6rem]" style={{ color: 'var(--text-dim)' }}>$0</span>
-              <span className="font-mono text-[0.6rem]" style={{ color: 'var(--text-dim)' }}>$3,000</span>
+              <span className="font-mono text-[0.6rem]" style={{ color: 'var(--text-dim)' }}>$1,500</span>
             </div>
           </div>
         </div>
