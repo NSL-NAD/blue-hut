@@ -20,13 +20,14 @@ const partnerContributes = [
 export default function Marketing() {
   return (
     <SectionWrapper sectionId="marketing" bg="surface">
-      {/* Geometric accents */}
-      <div className="geo-diamond" style={{ top: '12%', right: '6%', width: '70px', height: '70px', borderColor: 'rgba(255,45,123,0.1)' }} />
-      <div className="geo-ring" style={{ bottom: '10%', left: '4%', width: '55px', height: '55px', borderColor: 'rgba(0,240,255,0.08)' }} />
+      {/* Dot grid accents */}
+      <div className="dot-grid" style={{ top: '8%', right: '4%', width: '120px', height: '96px' }} />
+      <div className="dot-grid-pink" style={{ bottom: '8%', left: '3%', width: '96px', height: '72px' }} />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6 }}
         className="mb-10"
       >
@@ -46,7 +47,8 @@ export default function Marketing() {
         {/* N-Squared column */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           className="card-glass"
         >
@@ -87,7 +89,8 @@ export default function Marketing() {
         {/* Partners column */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="card-glass"
         >

@@ -41,6 +41,9 @@ export default function RevenueModel() {
 
   return (
     <SectionWrapper sectionId="revenue-model" bg="deep">
+      {/* Star field */}
+      <div className="star-field" />
+
       {/* Subtle grid pattern overlay */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.03]"
@@ -53,7 +56,8 @@ export default function RevenueModel() {
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6 }}
         className="mb-8"
       >
@@ -78,7 +82,8 @@ export default function RevenueModel() {
           <motion.div
             key={stat.label}
             initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ delay: i * 0.07 }}
             className="card-stat"
           >
@@ -107,7 +112,8 @@ export default function RevenueModel() {
       {/* Sliders */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
         transition={{ delay: 0.25 }}
         className="card-glass mb-8"
       >
@@ -238,7 +244,8 @@ export default function RevenueModel() {
       {/* Chart */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
         transition={{ delay: 0.3 }}
         className="card-glass mb-8"
       >

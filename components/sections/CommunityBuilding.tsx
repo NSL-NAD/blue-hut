@@ -50,14 +50,17 @@ export default function CommunityBuilding() {
           background: 'radial-gradient(circle, rgba(0,240,255,0.06) 0%, transparent 70%)',
         }}
       />
-      {/* Geometric accents */}
-      <div className="geo-diamond" style={{ top: '10%', right: '5%', width: '55px', height: '55px', borderColor: 'rgba(255,45,123,0.1)' }} />
-      <div className="geo-ring" style={{ bottom: '8%', right: '8%', width: '70px', height: '70px', borderColor: 'rgba(255,214,0,0.07)' }} />
-      <div className="geo-diamond" style={{ bottom: '20%', left: '3%', width: '40px', height: '40px', borderColor: 'rgba(176,38,255,0.08)' }} />
+      {/* Star field */}
+      <div className="star-field" />
+
+      {/* Dot grid accents */}
+      <div className="dot-grid" style={{ top: '5%', right: '3%', width: '120px', height: '96px' }} />
+      <div className="dot-grid-pink" style={{ bottom: '8%', left: '2%', width: '96px', height: '72px' }} />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6 }}
         className="mb-10"
       >
@@ -79,7 +82,8 @@ export default function CommunityBuilding() {
           <motion.div
             key={card.title}
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
             className="card-glass flex flex-col items-start"
           >
@@ -110,7 +114,8 @@ export default function CommunityBuilding() {
           <motion.div
             key={card.title}
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5, delay: (i + 3) * 0.1 }}
             className="card-glass flex flex-col items-start"
           >

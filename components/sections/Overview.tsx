@@ -19,15 +19,16 @@ export default function Overview() {
           background: 'radial-gradient(circle, rgba(255,45,123,0.06) 0%, transparent 70%)',
         }}
       />
-      {/* Geometric accents */}
-      <div className="geo-diamond" style={{ bottom: '15%', right: '6%', width: '65px', height: '65px', borderColor: 'rgba(255,214,0,0.08)' }} />
-      <div className="geo-ring" style={{ top: '18%', right: '12%', width: '45px', height: '45px', borderColor: 'rgba(176,38,255,0.08)' }} />
+      {/* Dot grid accents */}
+      <div className="dot-grid" style={{ bottom: '12%', right: '4%', width: '120px', height: '96px' }} />
+      <div className="dot-grid-pink" style={{ top: '15%', right: '10%', width: '72px', height: '72px' }} />
 
       <div className="flex flex-col gap-8">
         {/* Headline */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5 }}
         >
           <h2 className="font-display text-headline">
@@ -39,7 +40,8 @@ export default function Overview() {
         {/* Body */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           className="font-body text-lg md:text-xl leading-relaxed max-w-3xl font-light"
           style={{ color: 'var(--text-secondary)' }}
@@ -54,7 +56,8 @@ export default function Overview() {
         {/* Highlight pills */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.4, delay: 0.2 }}
           className="flex flex-wrap gap-3"
         >
@@ -78,7 +81,8 @@ export default function Overview() {
         {/* Disclaimer */}
         <motion.p
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.4, delay: 0.3 }}
           className="font-mono text-[0.65rem] italic mt-2"
           style={{ color: 'var(--text-dim)' }}

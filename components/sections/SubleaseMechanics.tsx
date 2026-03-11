@@ -43,13 +43,14 @@ const mechanics = [
 export default function SubleaseMechanics() {
   return (
     <SectionWrapper sectionId="sublease-mechanics" bg="surface">
-      {/* Geometric accents */}
-      <div className="geo-diamond" style={{ top: '8%', right: '5%', width: '60px', height: '60px', borderColor: 'rgba(0,240,255,0.08)' }} />
-      <div className="geo-ring" style={{ bottom: '12%', left: '4%', width: '50px', height: '50px', borderColor: 'rgba(255,107,45,0.08)' }} />
+      {/* Dot grid accents */}
+      <div className="dot-grid" style={{ top: '5%', right: '3%', width: '96px', height: '72px' }} />
+      <div className="dot-grid-pink" style={{ bottom: '8%', left: '2%', width: '120px', height: '72px' }} />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6 }}
         className="mb-10"
       >
@@ -81,7 +82,8 @@ export default function SubleaseMechanics() {
             <motion.div
               key={item.number}
               initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: i * 0.1, ease: 'easeOut' }}
               className="flex items-start gap-5 md:gap-8"
             >

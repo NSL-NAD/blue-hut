@@ -33,9 +33,13 @@ const cards = [
 export default function MenuConcept() {
   return (
     <SectionWrapper sectionId="menu-concept" bg="deep">
+      {/* Star field */}
+      <div className="star-field" />
+
       <motion.div
         initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.5 }}
         className="mb-8"
       >
@@ -54,7 +58,8 @@ export default function MenuConcept() {
           <motion.div
             key={card.title}
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.4, delay: i * 0.1, ease: 'easeOut' }}
             className="card-glass flex items-center gap-6"
           >

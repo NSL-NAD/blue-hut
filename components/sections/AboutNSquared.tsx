@@ -21,13 +21,17 @@ export default function AboutNSquared() {
         }}
       />
 
-      {/* Geometric diamond decorations */}
-      <div className="geo-diamond" style={{ top: '8%', right: '8%', width: '80px', height: '80px', borderColor: 'rgba(255,45,123,0.12)' }} />
-      <div className="geo-diamond" style={{ bottom: '12%', left: '5%', width: '50px', height: '50px', borderColor: 'rgba(0,240,255,0.1)' }} />
+      {/* Star field */}
+      <div className="star-field" />
+
+      {/* Dot grid accents */}
+      <div className="dot-grid" style={{ top: '6%', right: '4%', width: '144px', height: '96px' }} />
+      <div className="dot-grid-pink" style={{ bottom: '10%', left: '3%', width: '96px', height: '72px' }} />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6 }}
         className="mb-10"
       >
@@ -40,7 +44,8 @@ export default function AboutNSquared() {
       {/* Single combined bio card */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.5, delay: 0.15 }}
         className="card-glass max-w-3xl mx-auto flex flex-col items-center text-center"
       >

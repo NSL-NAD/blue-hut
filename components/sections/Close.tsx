@@ -11,17 +11,19 @@ export default function Close() {
 
   return (
     <SectionWrapper sectionId="close" bg="deep">
-      {/* Floating geometric accents */}
-      <div className="geo-diamond" style={{ top: '10%', left: '8%', width: '60px', height: '60px', borderColor: 'rgba(255,45,123,0.1)' }} />
-      <div className="geo-diamond" style={{ top: '15%', right: '10%', width: '40px', height: '40px', borderColor: 'rgba(0,240,255,0.08)' }} />
-      <div className="geo-ring" style={{ top: '25%', left: '12%', width: '90px', height: '90px', borderColor: 'rgba(176,38,255,0.08)' }} />
-      <div className="geo-ring" style={{ top: '20%', right: '15%', width: '60px', height: '60px', borderColor: 'rgba(255,214,0,0.06)' }} />
+      {/* Star field */}
+      <div className="star-field" />
+
+      {/* Dot grid accents */}
+      <div className="dot-grid" style={{ top: '8%', left: '5%', width: '120px', height: '96px' }} />
+      <div className="dot-grid-pink" style={{ top: '10%', right: '5%', width: '96px', height: '72px' }} />
 
       {/* Content — pushed to upper portion */}
       <div className="flex flex-col items-center justify-start text-center relative z-20 pt-4 pb-8">
         <motion.h2
           initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7 }}
           className="font-display text-headline mb-6 neon-text-pink"
         >
@@ -30,7 +32,8 @@ export default function Close() {
 
         <motion.p
           initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, delay: 0.15 }}
           className="font-body text-base md:text-lg leading-relaxed max-w-xl mb-10"
           style={{ color: 'var(--text-secondary)' }}
@@ -41,7 +44,8 @@ export default function Close() {
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           className="flex flex-col sm:flex-row gap-4"
         >
@@ -79,8 +83,67 @@ export default function Close() {
         </motion.div>
       </div>
 
-      {/* Synthwave sun — sits between content and grid, fully visible */}
-      <div className="synthwave-sun" />
+      {/* Sun atmospheric glow */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '-60px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: '800px',
+          height: '400px',
+          borderRadius: '50%',
+          background: 'radial-gradient(ellipse, rgba(255,45,123,0.18) 0%, rgba(255,107,45,0.08) 40%, transparent 70%)',
+          pointerEvents: 'none',
+          zIndex: 4,
+          filter: 'blur(20px)',
+        }}
+      />
+
+      {/* Enhanced synthwave sun — full half-circle at bottom edge */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: '520px',
+          height: '260px',
+          borderRadius: '520px 520px 0 0',
+          zIndex: 5,
+          background: 'linear-gradient(180deg, #FF2D7B 0%, #FF6B2D 45%, #FFD600 100%)',
+          overflow: 'hidden',
+          pointerEvents: 'none',
+          boxShadow: `
+            0 0 60px rgba(255, 45, 123, 0.6),
+            0 0 120px rgba(255, 45, 123, 0.35),
+            0 0 200px rgba(255, 107, 45, 0.2),
+            0 0 300px rgba(255, 214, 0, 0.1)
+          `,
+        }}
+      >
+        {/* CRT scan lines */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'repeating-linear-gradient(0deg, transparent 0px, transparent 10px, rgba(11,11,26,0.55) 10px, rgba(11,11,26,0.55) 13px)',
+          }}
+        />
+        {/* Inner glow at top of sun */}
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '80%',
+            height: '60%',
+            background: 'radial-gradient(ellipse, rgba(255,255,200,0.18) 0%, transparent 70%)',
+            pointerEvents: 'none',
+          }}
+        />
+      </div>
 
       {/* Enhanced synthwave grid floor */}
       <div className="synthwave-grid" />
@@ -88,7 +151,8 @@ export default function Close() {
       {/* Footer — above the grid */}
       <motion.p
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.4 }}
+        whileInView={{ opacity: 0.4 }}
+        viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.5, delay: 0.5 }}
         className="relative z-20 text-center mt-auto pt-4 pb-2 font-mono text-[0.65rem] tracking-wider"
         style={{ color: 'var(--text-dim)' }}
