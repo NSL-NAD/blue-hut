@@ -1,4 +1,5 @@
 'use client'
+import { useRef, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import SectionWrapper from '@/components/ui/SectionWrapper'
 
@@ -41,6 +42,32 @@ const mechanics = [
 ]
 
 export default function SubleaseMechanics() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const firstCircleRef = useRef<HTMLDivElement>(null)
+  const lastCircleRef = useRef<HTMLDivElement>(null)
+  const [lineStyle, setLineStyle] = useState<{ top: number; height: number } | null>(null)
+
+  useEffect(() => {
+    const measure = () => {
+      if (!containerRef.current || !firstCircleRef.current || !lastCircleRef.current) return
+      const container = containerRef.current.getBoundingClientRect()
+      const first = firstCircleRef.current.getBoundingClientRect()
+      const last = lastCircleRef.current.getBoundingClientRect()
+      const top = first.top + first.height / 2 - container.top
+      const height = (last.top + last.height / 2 - container.top) - top
+      setLineStyle({ top, height })
+    }
+
+    // Initial measurement + slight delay to let framer-motion settle
+    measure()
+    const t = setTimeout(measure, 300)
+    window.addEventListener('resize', measure)
+    return () => {
+      clearTimeout(t)
+      window.removeEventListener('resize', measure)
+    }
+  }, [])
+
   return (
     <SectionWrapper sectionId="sublease-mechanics" bg="surface">
       {/* Dot grid accents */}
@@ -75,15 +102,20 @@ export default function SubleaseMechanics() {
       </motion.div>
 
       {/* Timeline layout */}
-      <div className="relative max-w-3xl mx-auto">
-        {/* Vertical gradient line — starts at center of 01, ends at center of 05 */}
-        <div
-          className="absolute left-6 md:left-8 top-6 md:top-8 bottom-6 md:bottom-8 w-[3px] rounded-full hidden md:block"
-          style={{
-            background: 'var(--gradient-sunset)',
-            boxShadow: '0 0 12px rgba(255,45,123,0.2)',
-          }}
-        />
+      <div className="relative max-w-3xl mx-auto" ref={containerRef}>
+        {/* Dynamically measured line — runs exactly from center of 01 to center of 05 */}
+        {lineStyle && lineStyle.height > 0 && (
+          <div
+            className="absolute left-6 md:left-8 w-[3px] rounded-full hidden md:block"
+            style={{
+              top: `${lineStyle.top}px`,
+              height: `${lineStyle.height}px`,
+              background: 'var(--gradient-sunset)',
+              boxShadow: '0 0 12px rgba(255,45,123,0.2)',
+              transform: 'translateX(-50%)',
+            }}
+          />
+        )}
 
         <div className="flex flex-col gap-6">
           {mechanics.map((item, i) => (
@@ -95,8 +127,9 @@ export default function SubleaseMechanics() {
               transition={{ duration: 0.5, delay: i * 0.1, ease: 'easeOut' }}
               className="flex items-center gap-5 md:gap-8"
             >
-              {/* Numbered circle — center-aligned with card */}
+              {/* Numbered circle — center-aligned with card, measured for line endpoints */}
               <div
+                ref={i === 0 ? firstCircleRef : i === mechanics.length - 1 ? lastCircleRef : undefined}
                 className="shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center font-display text-lg md:text-xl font-bold relative z-10"
                 style={{
                   backgroundColor: item.color,

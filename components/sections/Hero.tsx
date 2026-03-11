@@ -2,8 +2,15 @@
 import { motion } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import Image from 'next/image'
+import { useTheme } from '@/context/ThemeContext'
 
 export default function Hero() {
+  const { theme } = useTheme()
+
+  const overlayGradient = theme === 'dark'
+    ? 'linear-gradient(180deg, rgba(11,11,26,0.3) 0%, rgba(11,11,26,0.7) 60%, #0B0B1A 100%)'
+    : 'linear-gradient(180deg, rgba(255,245,228,0.15) 0%, rgba(255,245,228,0.55) 60%, #FFF5E4 100%)'
+
   return (
     <div
       data-section="hero"
@@ -19,12 +26,10 @@ export default function Hero() {
         quality={90}
       />
 
-      {/* Gradient overlay — fades to deep bg at bottom */}
+      {/* Gradient overlay — theme-aware */}
       <div
         className="absolute inset-0"
-        style={{
-          background: 'linear-gradient(180deg, rgba(11,11,26,0.3) 0%, rgba(11,11,26,0.7) 60%, #0B0B1A 100%)',
-        }}
+        style={{ background: overlayGradient }}
       />
 
       {/* Pink glow behind title */}
@@ -54,8 +59,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
-          className="font-display text-hero text-white mb-6"
+          className="font-display text-hero mb-6"
           style={{
+            color: 'var(--text-primary)',
             textShadow: '0 0 40px rgba(255,45,123,0.3), 0 0 80px rgba(255,45,123,0.1)',
           }}
         >

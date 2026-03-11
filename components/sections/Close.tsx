@@ -36,7 +36,7 @@ export default function Close() {
           style={{
             color: 'var(--neon-pink)',
             opacity: isInView ? undefined : 0,
-            animation: isInView ? 'neon-flicker 2s ease-in forwards' : 'none',
+            animation: isInView ? 'neon-flicker 2.8s ease-in forwards' : 'none',
           }}
         >
           Let&rsquo;s Build

@@ -30,15 +30,15 @@ export default function MenuBoard({
       <div
         className="rounded-2xl overflow-hidden relative"
         style={{
-          backgroundColor: '#13132D',
-          boxShadow: '0 0 40px rgba(255,45,123,0.08), 0 8px 60px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.04), inset 0 0 0 4px rgba(255,255,255,0.02)',
+          backgroundColor: 'var(--bg-elevated)',
+          boxShadow: 'var(--shadow-soft), inset 0 0 0 1px rgba(255,255,255,0.04)',
         }}
       >
         {/* Top gradient bar */}
         <div className="h-1 w-full" style={{ background: 'var(--gradient-sunset-h)' }} />
 
         {/* Header */}
-        <div className="px-10 pt-10 pb-6 text-center">
+        <div className="px-8 pt-8 pb-5 text-center">
           <h3 className="font-display text-headline neon-text-pink mb-3">
             {headline}
           </h3>
@@ -48,10 +48,10 @@ export default function MenuBoard({
         </div>
 
         {/* Divider */}
-        <div className="mx-10 h-[1px]" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent)' }} />
+        <div className="mx-8 h-[1px]" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent)' }} />
 
         {/* Menu Items */}
-        <div className="px-10 py-8">
+        <div className="px-8 py-6">
           {items.map((item, i) => (
             <div key={i} className="menu-row">
               <span className="font-body text-lg font-medium" style={{ color: 'var(--text-primary)' }}>
@@ -73,7 +73,7 @@ export default function MenuBoard({
         <div className="h-1 w-full" style={{ background: 'var(--gradient-sunset-h)' }} />
 
         {/* Footer */}
-        <div className="px-10 py-4">
+        <div className="px-8 py-3">
           <p className="font-mono text-[0.65rem] italic text-center" style={{ color: 'var(--text-dim)' }}>
             {disclaimer}
           </p>
