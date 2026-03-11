@@ -59,8 +59,18 @@ export default function RevenueModel() {
     [monthlyData, perEventRevenue]
   )
 
-  const annualGross = monthlyData.reduce((s, m) => s + m.monthlyRevenue + m.monthlyMerchRevenue, 0) + annualEventRevenue
-  const annualNet = monthlyData.reduce((s, m) => s + m.monthlyNetProfit, 0) + annualEventRevenue * 0.70 // ~70% margin on events
+  const annualFoodRevenue = monthlyData.reduce((s, m) => s + m.monthlyRevenue, 0)
+  const annualMerchRevenue = monthlyData.reduce((s, m) => s + m.monthlyMerchRevenue, 0)
+  const annualGross = annualFoodRevenue + annualMerchRevenue + annualEventRevenue
+  const annualNet = monthlyData.reduce((s, m) => s + m.monthlyNetProfit, 0) + annualEventRevenue * 0.70
+
+  // True blended margin across all streams (gross profit / gross revenue)
+  const annualFoodProfit = annualFoodRevenue * BLENDED_MARGIN
+  const annualMerchProfit = annualMerchRevenue * MERCH_MARGIN
+  const annualEventProfit = annualEventRevenue * 0.70
+  const trueBlendedMargin = annualGross > 0
+    ? (annualFoodProfit + annualMerchProfit + annualEventProfit) / annualGross
+    : 0
 
   return (
     <SectionWrapper sectionId="revenue-model" bg="deep">
@@ -251,7 +261,7 @@ export default function RevenueModel() {
             Blended Margin
           </p>
           <p className="font-display text-2xl font-bold" style={{ color: 'var(--neon-yellow)' }}>
-            {(BLENDED_MARGIN * 100).toFixed(1)}%
+            {(trueBlendedMargin * 100).toFixed(1)}%
           </p>
         </div>
       </div>
