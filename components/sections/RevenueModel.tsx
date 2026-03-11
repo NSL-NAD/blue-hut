@@ -39,11 +39,24 @@ export default function RevenueModel() {
 
   const EVENT_COUNT = 4
   const EVENT_AVG_SPEND = 10
-  const annualEventRevenue = EVENT_COUNT * eventAttendees * EVENT_AVG_SPEND
+  const perEventRevenue = eventAttendees * EVENT_AVG_SPEND
+  const annualEventRevenue = EVENT_COUNT * perEventRevenue
+
+  // Feb=1, May=4, Aug=7, Nov=10 (0-indexed)
+  const EVENT_MONTH_INDICES = new Set([1, 4, 7, 10])
 
   const monthlyData = useMemo(
     () => calculateMonthlyData(convRate, FIXED_REV_SHARE_PCT, opsCost, merchConvRate),
     [convRate, opsCost, merchConvRate]
+  )
+
+  const chartData = useMemo(
+    () => monthlyData.map((m, i) => ({
+      ...m,
+      monthlyEventRevenue: EVENT_MONTH_INDICES.has(i) ? perEventRevenue : 0,
+    })),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [monthlyData, perEventRevenue]
   )
 
   const annualGross = monthlyData.reduce((s, m) => s + m.monthlyRevenue + m.monthlyMerchRevenue, 0) + annualEventRevenue
@@ -255,7 +268,7 @@ export default function RevenueModel() {
           Monthly Revenue
         </p>
         <ResponsiveContainer width="100%" height={280}>
-          <BarChart data={monthlyData}>
+          <BarChart data={chartData}>
             <CartesianGrid
               strokeDasharray="3 3"
               stroke="rgba(255,255,255,0.04)"
@@ -315,6 +328,14 @@ export default function RevenueModel() {
               name="Merch"
               stackId="a"
               fill="#FFD600"
+              opacity={0.90}
+              radius={[0, 0, 0, 0]}
+            />
+            <Bar
+              dataKey="monthlyEventRevenue"
+              name="Pop-Up Event"
+              stackId="a"
+              fill="#FF2D7B"
               opacity={0.90}
               radius={[6, 6, 0, 0]}
             />
