@@ -10,6 +10,7 @@ const nSquaredHandles = [
   'Digital design and creative assets',
   'Community outreach and local partnerships',
   'Email marketing and customer engagement',
+  'Day to day operations',
 ]
 
 const partnerContributes = [
