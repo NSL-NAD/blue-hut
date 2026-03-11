@@ -1,5 +1,6 @@
 'use client'
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 
 interface MenuItem {
   name: string
@@ -19,6 +20,9 @@ export default function MenuBoard({
   items,
   disclaimer,
 }: MenuBoardProps) {
+  const h3Ref = useRef<HTMLHeadingElement>(null)
+  const isInView = useInView(h3Ref, { once: true, amount: 0.5 })
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
@@ -39,7 +43,15 @@ export default function MenuBoard({
 
         {/* Header */}
         <div className="px-8 pt-8 pb-5 text-center">
-          <h3 className="font-display text-headline neon-text-pink mb-3">
+          <h3
+            ref={h3Ref}
+            className="font-display text-headline mb-3"
+            style={{
+              color: 'var(--neon-pink)',
+              opacity: isInView ? undefined : 0,
+              animation: isInView ? 'neon-flicker 2.8s ease-in forwards' : 'none',
+            }}
+          >
             {headline}
           </h3>
           <p className="font-mono text-xs uppercase tracking-[0.2em]" style={{ color: 'var(--text-secondary)' }}>
