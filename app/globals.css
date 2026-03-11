@@ -1,0 +1,237 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   SUMMER THEME — 90s Arcade (Default)
+   ============================================ */
+:root {
+  --bg-primary: #0D0D0D;
+  --bg-secondary: #F5F0E8;
+  --bg-card: #111111;
+  --bg-card-alt: #1A1A2E;
+  --text-primary: #F5F0E8;
+  --text-on-light: #0D0D0D;
+  --neon-teal: #00F5D4;
+  --neon-pink: #FF2D78;
+  --neon-yellow: #FFE600;
+  --neon-orange: #FF6B35;
+  --watermelon-red: #E8162A;
+  --watermelon-green: #3DDC84;
+  --border-pop: #00F5D4;
+  --highlight: #FF2D78;
+  --toggle-bg: #1A1A2E;
+  --glow-teal: 0 0 20px #00F5D4, 0 0 40px rgba(0, 245, 212, 0.3);
+  --glow-pink: 0 0 20px #FF2D78, 0 0 40px rgba(255, 45, 120, 0.3);
+  --chart-1: #00F5D4;
+  --chart-2: #FF2D78;
+  --chart-3: #FFE600;
+  --chart-4: #3DDC84;
+}
+
+/* ============================================
+   FALL / WINTER THEME — Nature with Brand DNA
+   ============================================ */
+.theme-winter {
+  --bg-primary: #0F1810;
+  --bg-secondary: #1C2B1E;
+  --bg-card: #182018;
+  --bg-card-alt: #231F1A;
+  --text-primary: #EDE8DF;
+  --text-on-light: #EDE8DF;
+  --amber: #D4821A;
+  --sage: #7B9E87;
+  --frost: #B8D4CC;
+  --ember: #C0392B;
+  --brand-teal: #00C4A8;
+  --brand-pink: #C4245E;
+  --border-pop: #D4821A;
+  --highlight: #D4821A;
+  --toggle-bg: #182018;
+  --glow-teal: 0 0 15px rgba(212, 130, 26, 0.4);
+  --glow-pink: none;
+  --neon-teal: #00C4A8;
+  --neon-pink: #C4245E;
+  --neon-yellow: #D4821A;
+  --neon-orange: #D4821A;
+  --watermelon-red: #C0392B;
+  --watermelon-green: #7B9E87;
+  --chart-1: #D4821A;
+  --chart-2: #7B9E87;
+  --chart-3: #B8D4CC;
+  --chart-4: #00C4A8;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body), system-ui, sans-serif;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================
+   SECTION BACKGROUNDS — ALTERNATING
+   ============================================ */
+[data-section-bg="dark"] {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+[data-section-bg="light"] {
+  background-color: var(--bg-secondary);
+  color: var(--text-on-light);
+}
+
+/* ============================================
+   TYPOGRAPHY UTILITIES
+   ============================================ */
+.text-hero {
+  font-size: clamp(4rem, 10vw, 9rem);
+  line-height: 0.95;
+}
+
+.text-section-headline {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1.05;
+}
+
+/* ============================================
+   NEON GLOW EFFECTS
+   ============================================ */
+.glow-teal {
+  text-shadow: var(--glow-teal);
+}
+
+.glow-pink {
+  text-shadow: var(--glow-pink);
+}
+
+/* ============================================
+   CARD STYLES
+   ============================================ */
+.card-base {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border: 2px solid var(--border-pop);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  transition: border-color 0.4s ease, background-color 0.4s ease, color 0.4s ease;
+}
+
+.card-base-alt {
+  background-color: var(--bg-card-alt);
+  color: var(--text-primary);
+  border: 2px solid var(--border-pop);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  transition: border-color 0.4s ease, background-color 0.4s ease, color 0.4s ease;
+}
+
+/* ============================================
+   CHECKERBOARD DIVIDER (Decorative)
+   ============================================ */
+.checkerboard-divider {
+  height: 4px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--neon-teal) 0px,
+    var(--neon-teal) 8px,
+    transparent 8px,
+    transparent 16px
+  );
+}
+
+/* ============================================
+   SLIDER STYLES (Revenue Dashboard)
+   ============================================ */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.15);
+  outline: none;
+  transition: background 0.2s;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--neon-teal);
+  cursor: pointer;
+  border: 2px solid var(--bg-primary);
+  box-shadow: 0 0 8px rgba(0, 245, 212, 0.4);
+  transition: transform 0.15s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--neon-teal);
+  cursor: pointer;
+  border: 2px solid var(--bg-primary);
+}
+
+/* ============================================
+   DOT LEADER (Menu Board)
+   ============================================ */
+.dot-leader {
+  display: flex;
+  align-items: baseline;
+}
+
+.dot-leader::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px dotted currentColor;
+  opacity: 0.3;
+  margin: 0 0.5rem;
+}
+
+/* ============================================
+   SCROLLBAR (Revenue section)
+   ============================================ */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--border-pop);
+  border-radius: 2px;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.label-mono {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.transition-theme {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
