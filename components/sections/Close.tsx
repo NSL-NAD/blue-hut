@@ -1,14 +1,9 @@
 'use client'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Mail, Download } from 'lucide-react'
+import { Mail } from 'lucide-react'
 
 export default function Close() {
-  const handleDownload = async () => {
-    const { exportProposalPDF } = await import('@/lib/pdf')
-    await exportProposalPDF()
-  }
-
   const h2Ref = useRef<HTMLHeadingElement>(null)
   const isInView = useInView(h2Ref, { once: true, amount: 0.5 })
 
@@ -77,22 +72,7 @@ export default function Close() {
             Get in Touch
           </motion.a>
 
-          {/* Secondary CTA — cyan outline */}
-          <motion.button
-            onClick={handleDownload}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-            className="flex items-center justify-center gap-2.5 px-10 py-4 rounded-xl font-mono text-sm uppercase tracking-wider transition-all duration-200"
-            style={{
-              border: '1px solid rgba(0,240,255,0.4)',
-              color: 'var(--neon-cyan)',
-              background: 'transparent',
-              boxShadow: '0 0 15px rgba(0,240,255,0.08)',
-            }}
-          >
-            <Download size={18} />
-            Download Proposal
-          </motion.button>
+
         </motion.div>
       </div>
 
