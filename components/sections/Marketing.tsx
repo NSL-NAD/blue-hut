@@ -18,6 +18,8 @@ const partnerContributes = [
   'Established food and beverage offerings',
 ]
 
+const partnerNote = 'Bartolotta involvement is completely optional — any contribution is a bonus, not a requirement.'
+
 export default function Marketing() {
   return (
     <SectionWrapper sectionId="marketing" bg="surface">
@@ -39,7 +41,7 @@ export default function Marketing() {
           className="font-body text-base md:text-lg leading-relaxed max-w-2xl"
           style={{ color: 'var(--text-secondary)' }}
         >
-          A collaborative promotional model — no one party carries the load alone.
+          Marketing is our bread and butter — this is what we do. We handle the full promotional lift so our partners don&rsquo;t have to.
         </p>
         <div className="neon-stripe w-20 mt-5" />
       </motion.div>
@@ -127,6 +129,15 @@ export default function Marketing() {
               </li>
             ))}
           </ul>
+          <p
+            className="font-mono text-[0.65rem] italic mt-6 pt-4"
+            style={{
+              color: 'var(--text-dim)',
+              borderTop: '1px solid rgba(255,255,255,0.06)',
+            }}
+          >
+            {partnerNote}
+          </p>
         </motion.div>
       </div>
     </SectionWrapper>
