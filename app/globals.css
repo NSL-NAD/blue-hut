@@ -146,11 +146,11 @@ a, button, [role="button"], input[type="range"] {
 }
 
 .card-glass:hover {
-  border-color: rgba(0, 240, 255, 0.4);
+  border-color: rgba(0, 240, 255, 0.65);
   box-shadow:
-    0 0 20px rgba(0, 240, 255, 0.35),
-    0 0 50px rgba(0, 240, 255, 0.15),
-    0 0 100px rgba(0, 240, 255, 0.06),
+    0 0 25px rgba(0, 240, 255, 0.65),
+    0 0 60px rgba(0, 240, 255, 0.35),
+    0 0 120px rgba(0, 240, 255, 0.15),
     0 12px 40px rgba(0, 0, 0, 0.6);
   transform: translateY(-4px);
 }
@@ -167,11 +167,11 @@ a, button, [role="button"], input[type="range"] {
 }
 
 .card-neon:hover {
-  border-color: rgba(255, 45, 123, 0.55);
+  border-color: rgba(255, 45, 123, 0.80);
   box-shadow:
-    0 0 20px rgba(255, 45, 123, 0.4),
-    0 0 50px rgba(255, 45, 123, 0.18),
-    0 0 100px rgba(255, 45, 123, 0.07),
+    0 0 25px rgba(255, 45, 123, 0.70),
+    0 0 60px rgba(255, 45, 123, 0.40),
+    0 0 120px rgba(255, 45, 123, 0.15),
     0 12px 40px rgba(0, 0, 0, 0.6);
   transform: translateY(-4px);
 }
@@ -188,10 +188,10 @@ a, button, [role="button"], input[type="range"] {
 }
 
 .card-stat:hover {
-  border-color: rgba(0, 240, 255, 0.3);
+  border-color: rgba(0, 240, 255, 0.60);
   box-shadow:
-    0 0 16px rgba(0, 240, 255, 0.3),
-    0 0 40px rgba(0, 240, 255, 0.12),
+    0 0 22px rgba(0, 240, 255, 0.60),
+    0 0 55px rgba(0, 240, 255, 0.30),
     0 8px 30px rgba(0, 0, 0, 0.5);
   transform: translateY(-2px);
 }
@@ -505,11 +505,11 @@ input[type="range"]::-moz-range-thumb {
 }
 
 [data-theme="light"] .card-glass:hover {
-  border-color: rgba(0, 114, 207, 0.30);
+  border-color: rgba(0, 114, 207, 0.60);
   box-shadow:
-    0 0 20px rgba(0, 114, 207, 0.15),
-    0 0 50px rgba(0, 114, 207, 0.06),
-    0 12px 40px rgba(100, 50, 0, 0.12);
+    0 0 25px rgba(0, 114, 207, 0.40),
+    0 0 60px rgba(0, 114, 207, 0.18),
+    0 12px 40px rgba(100, 50, 0, 0.15);
   transform: translateY(-4px);
 }
 
@@ -519,11 +519,11 @@ input[type="range"]::-moz-range-thumb {
 }
 
 [data-theme="light"] .card-neon:hover {
-  border-color: rgba(200, 0, 42, 0.38);
+  border-color: rgba(200, 0, 42, 0.70);
   box-shadow:
-    0 0 20px rgba(200, 0, 42, 0.2),
-    0 0 50px rgba(200, 0, 42, 0.08),
-    0 12px 40px rgba(100, 50, 0, 0.12);
+    0 0 25px rgba(200, 0, 42, 0.45),
+    0 0 60px rgba(200, 0, 42, 0.20),
+    0 12px 40px rgba(100, 50, 0, 0.15);
   transform: translateY(-4px);
 }
 
@@ -533,11 +533,11 @@ input[type="range"]::-moz-range-thumb {
 }
 
 [data-theme="light"] .card-stat:hover {
-  border-color: rgba(0, 114, 207, 0.22);
+  border-color: rgba(0, 114, 207, 0.55);
   box-shadow:
-    0 0 16px rgba(0, 114, 207, 0.15),
-    0 0 40px rgba(0, 114, 207, 0.06),
-    0 8px 30px rgba(100, 50, 0, 0.08);
+    0 0 22px rgba(0, 114, 207, 0.40),
+    0 0 50px rgba(0, 114, 207, 0.18),
+    0 8px 30px rgba(100, 50, 0, 0.10);
   transform: translateY(-2px);
 }
 

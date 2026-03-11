@@ -29,8 +29,8 @@ function formatCurrency(val: number): string {
 const FIXED_REV_SHARE_PCT = 20
 
 export default function RevenueModel() {
-  const [convRate, setConvRate] = useState(8)
-  const [opsCost, setOpsCost] = useState(1200)
+  const [convRate, setConvRate] = useState(25)
+  const [opsCost, setOpsCost] = useState(500)
 
   const monthlyData = useMemo(
     () => calculateMonthlyData(convRate, FIXED_REV_SHARE_PCT, opsCost),
@@ -138,16 +138,16 @@ export default function RevenueModel() {
             </div>
             <input
               type="range"
-              min={2}
-              max={25}
+              min={0}
+              max={50}
               step={1}
               value={convRate}
               onChange={(e) => setConvRate(Number(e.target.value))}
               className="w-full"
             />
             <div className="flex justify-between mt-2">
-              <span className="font-mono text-[0.6rem]" style={{ color: 'var(--text-dim)' }}>2%</span>
-              <span className="font-mono text-[0.6rem]" style={{ color: 'var(--text-dim)' }}>25%</span>
+              <span className="font-mono text-[0.6rem]" style={{ color: 'var(--text-dim)' }}>0%</span>
+              <span className="font-mono text-[0.6rem]" style={{ color: 'var(--text-dim)' }}>50%</span>
             </div>
           </div>
 
@@ -163,7 +163,7 @@ export default function RevenueModel() {
             </div>
             <input
               type="range"
-              min={400}
+              min={0}
               max={3000}
               step={100}
               value={opsCost}
@@ -171,7 +171,7 @@ export default function RevenueModel() {
               className="w-full"
             />
             <div className="flex justify-between mt-2">
-              <span className="font-mono text-[0.6rem]" style={{ color: 'var(--text-dim)' }}>$400</span>
+              <span className="font-mono text-[0.6rem]" style={{ color: 'var(--text-dim)' }}>$0</span>
               <span className="font-mono text-[0.6rem]" style={{ color: 'var(--text-dim)' }}>$3,000</span>
             </div>
           </div>

@@ -40,7 +40,7 @@ export default function Close() {
           }}
         >
           Let&rsquo;s Build
-          <span className="block">Something Good</span>
+          <span className="block">Something Great</span>
         </h2>
 
         <motion.p
