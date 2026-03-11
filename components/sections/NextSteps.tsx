@@ -6,26 +6,26 @@ import SectionWrapper from '@/components/ui/SectionWrapper'
 const steps = [
   {
     number: '01',
-    icon: ScrollText,
-    title: 'Discuss Lease Terms',
-    description:
-      'Walk through the sublease structure or revenue share arrangement and land on a framework that works for all parties. No pressure — just alignment.',
-    color: 'var(--neon-cyan)',
-  },
-  {
-    number: '02',
     icon: MapPin,
     title: 'Site Visit',
     description:
       'A quick walkthrough of the Blue Hut to assess existing infrastructure — storage, power, water, and utility access. Helps N-Squared scope the renovation accurately.',
-    color: 'var(--neon-pink)',
+    color: 'var(--neon-cyan)',
   },
   {
-    number: '03',
+    number: '02',
     icon: HardHat,
     title: 'Renovation Spec',
     description:
       'N-Squared delivers a detailed renovation plan: scope, materials, timeline, and cost. This also refines the deal terms with real numbers attached.',
+    color: 'var(--neon-pink)',
+  },
+  {
+    number: '03',
+    icon: ScrollText,
+    title: 'Lease Term Options',
+    description:
+      'Walk through the sublease structure or revenue share arrangement and land on a framework that works for all parties. No pressure — just alignment.',
     color: 'var(--neon-yellow)',
   },
   {
