@@ -18,52 +18,61 @@ const partnerContributes = [
 
 export default function Marketing() {
   return (
-    <SectionWrapper sectionId="marketing" bg="white">
+    <SectionWrapper sectionId="marketing" bg="surface">
       <motion.div
-        initial={{ opacity: 0, y: 16 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="mb-6"
+        transition={{ duration: 0.6 }}
+        className="mb-10"
       >
-        <h2 className="font-display text-headline mb-2">
+        <h2 className="font-display text-headline mb-3">
           Marketing & Promotion
         </h2>
-        <p className="font-body text-base md:text-lg leading-relaxed max-w-2xl" style={{ color: 'var(--text-secondary)' }}>
+        <p
+          className="font-body text-base md:text-lg leading-relaxed max-w-2xl"
+          style={{ color: 'var(--text-secondary)' }}
+        >
           A collaborative promotional model — no one party carries the load alone.
         </p>
-        <div className="geo-stripe w-20 mt-4" />
+        <div className="neon-stripe w-20 mt-5" />
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* N-Squared column */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.1 }}
-          className="card-pop"
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="card-glass"
         >
-          <div className="flex items-center gap-3 mb-5">
+          <div className="flex items-center gap-4 mb-6">
             <div
-              className="w-10 h-10 rounded-lg flex items-center justify-center"
-              style={{ backgroundColor: 'var(--bg-accent)' }}
+              className="w-12 h-12 rounded-2xl flex items-center justify-center"
+              style={{
+                background: 'radial-gradient(circle, rgba(255,45,123,0.15) 0%, transparent 70%)',
+                border: '1px solid rgba(255,45,123,0.2)',
+              }}
             >
-              <Megaphone size={22} style={{ color: 'var(--accent-1)' }} />
+              <Megaphone size={24} style={{ color: 'var(--neon-pink)' }} />
             </div>
             <h3
               className="label-mono text-xs"
-              style={{ color: 'var(--accent-1)' }}
+              style={{ color: 'var(--neon-pink)' }}
             >
               N-Squared handles
             </h3>
           </div>
-          <ul className="space-y-3">
+          <ul className="space-y-4">
             {nSquaredHandles.map((item) => (
               <li
                 key={item}
-                className="font-body text-sm leading-relaxed flex items-start gap-2.5"
+                className="font-body text-sm leading-relaxed flex items-start gap-3"
                 style={{ color: 'var(--text-secondary)' }}
               >
-                <span className="shrink-0 mt-1.5 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--accent-1)' }} />
+                <span
+                  className="shrink-0 mt-2 w-4 h-[2px] rounded-full"
+                  style={{ backgroundColor: 'var(--neon-pink)' }}
+                />
                 {item}
               </li>
             ))}
@@ -72,33 +81,39 @@ export default function Marketing() {
 
         {/* Partners column */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.2 }}
-          className="card-pop"
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="card-glass"
         >
-          <div className="flex items-center gap-3 mb-5">
+          <div className="flex items-center gap-4 mb-6">
             <div
-              className="w-10 h-10 rounded-lg flex items-center justify-center"
-              style={{ backgroundColor: 'var(--bg-accent)' }}
+              className="w-12 h-12 rounded-2xl flex items-center justify-center"
+              style={{
+                background: 'radial-gradient(circle, rgba(0,240,255,0.15) 0%, transparent 70%)',
+                border: '1px solid rgba(0,240,255,0.2)',
+              }}
             >
-              <Users size={22} style={{ color: 'var(--accent-2)' }} />
+              <Users size={24} style={{ color: 'var(--neon-cyan)' }} />
             </div>
             <h3
               className="label-mono text-xs"
-              style={{ color: 'var(--accent-2)' }}
+              style={{ color: 'var(--neon-cyan)' }}
             >
               Bartolotta + Parks contribute
             </h3>
           </div>
-          <ul className="space-y-3">
+          <ul className="space-y-4">
             {partnerContributes.map((item) => (
               <li
                 key={item}
-                className="font-body text-sm leading-relaxed flex items-start gap-2.5"
+                className="font-body text-sm leading-relaxed flex items-start gap-3"
                 style={{ color: 'var(--text-secondary)' }}
               >
-                <span className="shrink-0 mt-1.5 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: 'var(--accent-2)' }} />
+                <span
+                  className="shrink-0 mt-2 w-4 h-[2px] rounded-full"
+                  style={{ backgroundColor: 'var(--neon-cyan)' }}
+                />
                 {item}
               </li>
             ))}

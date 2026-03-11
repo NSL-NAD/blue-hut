@@ -1,6 +1,5 @@
 'use client'
 import { motion } from 'framer-motion'
-import { Coffee } from 'lucide-react'
 
 interface MenuItem {
   name: string
@@ -24,51 +23,43 @@ export default function MenuBoard({
     <motion.div
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -16 }}
-      transition={{ duration: 0.4 }}
+      transition={{ duration: 0.5 }}
       className="w-full max-w-2xl mx-auto"
     >
       <div
-        className="rounded-2xl overflow-hidden"
+        className="rounded-2xl overflow-hidden relative"
         style={{
-          border: '3px solid var(--border-pop)',
-          backgroundColor: 'var(--bg-card)',
-          boxShadow: 'var(--shadow-hover)',
+          backgroundColor: '#13132D',
+          boxShadow: '0 0 40px rgba(255,45,123,0.08), 0 8px 60px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.04), inset 0 0 0 4px rgba(255,255,255,0.02)',
         }}
       >
+        {/* Top gradient bar */}
+        <div className="h-1 w-full" style={{ background: 'var(--gradient-sunset-h)' }} />
+
         {/* Header */}
-        <div
-          className="px-8 pt-8 pb-5 text-center"
-          style={{ borderBottom: '3px solid var(--border-pop)' }}
-        >
-          <div className="flex items-center justify-center gap-3 mb-3">
-            <Coffee size={28} style={{ color: 'var(--accent-1)' }} />
-            <h3
-              className="font-display text-headline"
-              style={{ color: 'var(--accent-2)' }}
-            >
-              {headline}
-            </h3>
-          </div>
-          <p className="font-mono text-xs uppercase tracking-wider" style={{ color: 'var(--text-secondary)' }}>
+        <div className="px-10 pt-10 pb-6 text-center">
+          <h3 className="font-display text-headline neon-text-pink mb-3">
+            {headline}
+          </h3>
+          <p className="font-mono text-xs uppercase tracking-[0.2em]" style={{ color: 'var(--text-secondary)' }}>
             {subhead}
           </p>
         </div>
 
+        {/* Divider */}
+        <div className="mx-10 h-[1px]" style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent)' }} />
+
         {/* Menu Items */}
-        <div className="px-8 py-6">
+        <div className="px-10 py-8">
           {items.map((item, i) => (
             <div key={i} className="menu-row">
-              <span className="font-body text-base font-medium" style={{ color: 'var(--text-primary)' }}>
+              <span className="font-body text-lg font-medium" style={{ color: 'var(--text-primary)' }}>
                 {item.name}
               </span>
               {item.tag && (
                 <span
-                  className="font-mono text-[0.65rem] ml-3 shrink-0 px-2 py-0.5 rounded-full"
-                  style={{
-                    color: 'var(--accent-1)',
-                    backgroundColor: 'var(--bg-accent)',
-                  }}
+                  className="font-mono text-[0.65rem] font-bold ml-4 shrink-0 uppercase tracking-wider"
+                  style={{ color: 'var(--neon-cyan)' }}
                 >
                   {item.tag}
                 </span>
@@ -77,12 +68,12 @@ export default function MenuBoard({
           ))}
         </div>
 
-        {/* Geo stripe */}
-        <div className="geo-stripe mx-8" />
+        {/* Bottom gradient bar */}
+        <div className="h-1 w-full" style={{ background: 'var(--gradient-sunset-h)' }} />
 
         {/* Footer */}
-        <div className="px-8 py-4">
-          <p className="font-mono text-[0.65rem] italic text-center" style={{ color: 'var(--text-secondary)', opacity: 0.6 }}>
+        <div className="px-10 py-4">
+          <p className="font-mono text-[0.65rem] italic text-center" style={{ color: 'var(--text-dim)' }}>
             {disclaimer}
           </p>
         </div>

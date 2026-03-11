@@ -43,8 +43,15 @@ export default function DotNav() {
         >
           {hovered === i && (
             <span
-              className="absolute right-7 whitespace-nowrap font-mono text-[0.6rem] font-medium tracking-wider px-2 py-0.5 rounded-md"
-              style={{ color: 'var(--text-primary)', background: 'var(--bg-card)', boxShadow: 'var(--shadow)' }}
+              className="absolute right-7 whitespace-nowrap font-mono text-[0.6rem] font-bold tracking-wider px-2.5 py-1 rounded-lg"
+              style={{
+                color: 'var(--text-primary)',
+                background: 'var(--bg-glass)',
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)',
+                border: '1px solid rgba(255,255,255,0.06)',
+                boxShadow: 'var(--shadow-soft)',
+              }}
             >
               {label}
             </span>
@@ -59,9 +66,10 @@ export default function DotNav() {
               style={{
                 width: i === active ? 10 : 6,
                 height: i === active ? 10 : 6,
-                background: i === active ? 'var(--accent-1)' : 'transparent',
-                border: i === active ? 'none' : '1.5px solid var(--text-secondary)',
-                opacity: i === active ? 1 : 0.3,
+                background: i === active ? 'var(--neon-pink)' : 'transparent',
+                border: i === active ? 'none' : '1.5px solid rgba(255,255,255,0.15)',
+                opacity: i === active ? 1 : 0.4,
+                boxShadow: i === active ? '0 0 8px rgba(255,45,123,0.6)' : 'none',
               }}
             />
           </button>

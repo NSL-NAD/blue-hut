@@ -7,66 +7,65 @@ const cards = [
   {
     icon: UtensilsCrossed,
     title: 'Seasonal Quick Eats',
-    description:
-      'Fresh, approachable food that fits the setting. Light in summer, warm and hearty in cooler months.',
-    color: 'var(--accent-1)',
+    description: 'Fresh, approachable food that fits the lakefront setting.',
+    color: 'var(--neon-pink)',
   },
   {
     icon: Popcorn,
     title: 'High-Margin Snacks',
-    description:
-      'Popcorn, protein cookies, beverages — items that move fast and keep the hut humming.',
-    color: 'var(--accent-2)',
+    description: 'Popcorn, protein cookies, beverages — fast-moving staples.',
+    color: 'var(--neon-cyan)',
   },
   {
     icon: Handshake,
-    title: 'Local Food Partnerships',
-    description:
-      'Sourcing and collabs with Milwaukee-area producers and brands to reinforce community roots.',
-    color: 'var(--accent-4)',
+    title: 'Local Partnerships',
+    description: 'Collabs with Milwaukee-area producers and brands.',
+    color: 'var(--neon-yellow)',
   },
   {
     icon: ChefHat,
     title: 'Bartolotta Items',
-    description:
-      'Elevated, signature offerings from The Bartolotta Restaurants — beach-appropriate formats, premium quality.',
-    color: 'var(--accent-6)',
+    description: 'Signature offerings — beach-appropriate, premium quality.',
+    color: 'var(--neon-purple)',
   },
 ]
 
 export default function MenuConcept() {
   return (
-    <SectionWrapper sectionId="menu-concept" bg="white">
+    <SectionWrapper sectionId="menu-concept" bg="deep">
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="mb-6"
+        className="mb-8"
       >
-        <h2 className="font-display text-headline mb-2">
+        <h2 className="font-display text-headline mb-3">
           Menu Concept
         </h2>
-        <p className="font-body text-base md:text-lg leading-relaxed max-w-2xl" style={{ color: 'var(--text-secondary)' }}>
-          Seasonal quick eats built around accessibility, margin, and community.
+        <p className="font-body text-lg font-light max-w-2xl" style={{ color: 'var(--text-secondary)' }}>
+          Built around accessibility, margin, and community.
         </p>
-        <div className="geo-stripe w-20 mt-4" />
+        <div className="neon-stripe w-20 mt-4" />
       </motion.div>
 
-      {/* Cards as stacked rows */}
-      <div className="flex flex-col gap-4">
+      {/* 2x2 grid of wide cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {cards.map((card, i) => (
           <motion.div
             key={card.title}
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.4, delay: i * 0.08, ease: 'easeOut' }}
-            className="card-pop flex items-center gap-5"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: i * 0.1, ease: 'easeOut' }}
+            className="card-glass flex items-center gap-6"
           >
             <div
-              className="shrink-0 w-14 h-14 rounded-xl flex items-center justify-center"
-              style={{ backgroundColor: `color-mix(in srgb, ${card.color} 15%, transparent)` }}
+              className="shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center"
+              style={{
+                background: `radial-gradient(circle, ${card.color}18 0%, transparent 70%)`,
+                border: `1px solid ${card.color}20`,
+              }}
             >
-              <card.icon size={28} style={{ color: card.color }} />
+              <card.icon size={32} style={{ color: card.color }} />
             </div>
             <div>
               <h3 className="font-display text-lg font-bold mb-1">

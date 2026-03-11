@@ -19,14 +19,24 @@ export default function Hero() {
         quality={90}
       />
 
-      {/* Overlay */}
+      {/* Gradient overlay — fades to deep bg at bottom */}
       <div
         className="absolute inset-0"
-        style={{ backgroundColor: 'var(--bg-hero-overlay)' }}
+        style={{
+          background: 'linear-gradient(180deg, rgba(11,11,26,0.3) 0%, rgba(11,11,26,0.7) 60%, #0B0B1A 100%)',
+        }}
       />
 
-      {/* Geo stripe at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-2 geo-stripe z-10" />
+      {/* Pink glow behind title */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse, rgba(255,45,123,0.12) 0%, transparent 70%)',
+        }}
+      />
+
+      {/* Neon stripe at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-[3px] neon-stripe z-10" />
 
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
@@ -34,7 +44,8 @@ export default function Hero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="label-mono text-sm mb-4 tracking-[0.2em] text-white/70"
+          className="label-mono text-sm mb-5 tracking-[0.25em]"
+          style={{ color: 'var(--neon-cyan)', opacity: 0.7 }}
         >
           McKinley Beach, Milwaukee
         </motion.p>
@@ -43,7 +54,10 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
-          className="font-display text-hero text-white mb-5"
+          className="font-display text-hero text-white mb-6"
+          style={{
+            textShadow: '0 0 40px rgba(255,45,123,0.3), 0 0 80px rgba(255,45,123,0.1)',
+          }}
         >
           Blue Hut
         </motion.h1>
@@ -52,16 +66,18 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5, ease: 'easeOut' }}
-          className="font-body text-lg md:text-xl mb-8 text-white/90 max-w-2xl mx-auto"
+          className="font-body text-xl md:text-2xl font-light mb-10 max-w-2xl mx-auto"
+          style={{ color: 'var(--text-primary)', opacity: 0.9 }}
         >
           A community-driven concession concept for the lakefront
         </motion.p>
 
         <motion.p
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.6 }}
+          animate={{ opacity: 0.5 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="font-mono text-[0.7rem] uppercase tracking-[0.15em] text-white/60"
+          className="font-mono text-[0.75rem] uppercase tracking-[0.15em]"
+          style={{ color: 'var(--neon-cyan)' }}
         >
           N-Squared + The Bartolotta Restaurants + MKE County Parks
         </motion.p>
@@ -77,7 +93,7 @@ export default function Hero() {
           ease: 'easeInOut',
         }}
       >
-        <ChevronDown size={28} className="text-white/60" />
+        <ChevronDown size={28} style={{ color: 'var(--neon-cyan)', opacity: 0.4 }} />
       </motion.div>
     </div>
   )

@@ -1,23 +1,23 @@
 import type { Metadata } from 'next'
-import { Space_Grotesk, DM_Mono, DM_Sans } from 'next/font/google'
+import { Syne, Outfit, Space_Mono } from 'next/font/google'
 import './globals.css'
-import { SeasonProvider } from '@/context/SeasonContext'
 
-const display = Space_Grotesk({
+const display = Syne({
   subsets: ['latin'],
   variable: '--font-display',
-  weight: ['400', '500', '600', '700'],
+  weight: ['700', '800'],
 })
 
-const mono = DM_Mono({
-  weight: ['300', '400', '500'],
-  subsets: ['latin'],
-  variable: '--font-mono',
-})
-
-const body = DM_Sans({
+const body = Outfit({
   subsets: ['latin'],
   variable: '--font-body',
+  weight: ['300', '400', '500', '600'],
+})
+
+const mono = Space_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  weight: ['400', '700'],
 })
 
 export const metadata: Metadata = {
@@ -34,9 +34,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${display.variable} ${mono.variable} ${body.variable} antialiased`}
+        className={`${display.variable} ${body.variable} ${mono.variable} antialiased`}
       >
-        <SeasonProvider>{children}</SeasonProvider>
+        {children}
       </body>
     </html>
   )

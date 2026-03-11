@@ -4,40 +4,38 @@ import { ReactNode } from 'react'
 interface SectionWrapperProps {
   children: ReactNode
   sectionId: string
-  bg?: 'cream' | 'white' | 'accent' | 'dark'
+  bg?: 'deep' | 'surface' | 'elevated'
   className?: string
 }
 
 const bgMap = {
-  cream: 'var(--bg-primary)',
-  white: 'var(--bg-secondary)',
-  accent: 'var(--bg-accent)',
-  dark: 'var(--accent-5)',
+  deep: 'var(--bg-deep)',
+  surface: 'var(--bg-surface)',
+  elevated: 'var(--bg-elevated)',
 }
 
 export default function SectionWrapper({
   children,
   sectionId,
-  bg = 'cream',
+  bg = 'deep',
   className = '',
 }: SectionWrapperProps) {
-  const isDark = bg === 'dark'
-
   return (
     <div
       data-section={sectionId}
       className={`
         relative w-full min-h-[100dvh]
         flex flex-col justify-center
-        px-5 py-10 md:px-8 md:py-14
+        px-6 py-10 md:px-12 md:py-14
+        overflow-hidden
         ${className}
       `}
       style={{
         backgroundColor: bgMap[bg],
-        color: isDark ? 'var(--text-on-dark)' : 'var(--text-primary)',
+        color: 'var(--text-primary)',
       }}
     >
-      <div className="w-full max-w-5xl mx-auto">
+      <div className="w-full max-w-6xl mx-auto relative z-10">
         {children}
       </div>
     </div>

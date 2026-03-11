@@ -28,7 +28,7 @@ export async function exportProposalPDF() {
     const canvas = await html2canvas(el, {
       scale: 1.5,
       useCORS: true,
-      backgroundColor: getComputedStyle(el).backgroundColor || '#0D0D0D',
+      backgroundColor: getComputedStyle(el).backgroundColor || '#0B0B1A',
       windowWidth: 1440,
       windowHeight: 900,
     })

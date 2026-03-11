@@ -7,7 +7,7 @@ const people = [
   {
     name: 'Nic DeMore',
     initials: 'ND',
-    bio: 'Local business owner running a digital marketing agency in the Third Ward (Margle Media, est. 2017). Background in web development, digital design, event planning, and hospitality. Passionate about food, community, and bringing people together — drawing inspiration from travels around the world.',
+    bio: 'Local business owner running a digital marketing agency in the Third Ward (Margle Media, est. 2017). Background in web development, digital design, event planning, and hospitality. Passionate about food, community, and bringing people together.',
     links: [
       { label: 'nicdemore.com', href: 'https://nicdemore.com' },
       { label: 'marglemedia.com', href: 'https://marglemedia.com' },
@@ -18,7 +18,7 @@ const people = [
   {
     name: 'Natasha',
     initials: 'N',
-    bio: 'Lawyer and insurance advisor from Canada with experience running her own firm. Currently getting licensed in the States. Background in customer service, hospitality, and event planning. Shares a passion for food, community, and creating vibrant gathering spaces inspired by global travel.',
+    bio: 'Lawyer and insurance advisor from Canada with experience running her own firm. Currently getting licensed in the States. Background in customer service, hospitality, and event planning. Shares a passion for food, community, and creating vibrant gathering spaces.',
     links: [
       { label: 'nicdemore.com', href: 'https://nicdemore.com' },
       { label: 'marglemedia.com', href: 'https://marglemedia.com' },
@@ -30,45 +30,64 @@ const people = [
 
 export default function AboutNSquared() {
   return (
-    <SectionWrapper sectionId="about" bg="accent">
+    <SectionWrapper sectionId="about" bg="deep">
+      {/* Ambient purple glow */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, rgba(176,38,255,0.06) 0%, transparent 70%)',
+        }}
+      />
+
       <motion.div
-        initial={{ opacity: 0, y: 16 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="mb-6"
+        transition={{ duration: 0.6 }}
+        className="mb-10"
       >
         <h2 className="font-display text-headline">
           About N-Squared
         </h2>
-        <div className="geo-stripe w-20 mt-4" />
+        <div className="neon-stripe w-20 mt-5" />
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {people.map((person, i) => (
           <motion.div
             key={person.name}
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: i * 0.1 }}
-            className="card-pop flex flex-col items-center text-center"
+            transition={{ duration: 0.5, delay: i * 0.15 }}
+            className="card-glass flex flex-col items-center text-center"
           >
-            {/* Photo placeholder */}
+            {/* Avatar with gradient border ring */}
             <div
-              className="w-24 h-24 rounded-2xl mb-4 flex items-center justify-center overflow-hidden"
+              className="w-24 h-24 rounded-full mb-5 flex items-center justify-center"
               style={{
-                backgroundColor: 'var(--bg-accent)',
-                border: '3px solid var(--border-pop)',
+                background: 'var(--gradient-sunset)',
+                padding: '3px',
               }}
             >
-              <span className="font-display text-2xl" style={{ color: 'var(--accent-1)', opacity: 0.5 }}>
-                {person.initials}
-              </span>
+              <div
+                className="w-full h-full rounded-full flex items-center justify-center"
+                style={{ backgroundColor: 'var(--bg-elevated)' }}
+              >
+                <span
+                  className="font-display text-2xl font-bold"
+                  style={{ color: 'var(--neon-pink)', opacity: 0.7 }}
+                >
+                  {person.initials}
+                </span>
+              </div>
             </div>
 
-            <h3 className="font-display text-xl font-bold mb-2">
+            <h3 className="font-display text-xl font-bold mb-3">
               {person.name}
             </h3>
-            <p className="font-body text-sm leading-relaxed mb-4" style={{ color: 'var(--text-secondary)' }}>
+            <p
+              className="font-body text-sm leading-relaxed mb-5"
+              style={{ color: 'var(--text-secondary)' }}
+            >
               {person.bio}
             </p>
 
@@ -79,8 +98,8 @@ export default function AboutNSquared() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1 font-mono text-xs hover:opacity-100 opacity-70 transition-opacity"
-                  style={{ color: 'var(--accent-2)' }}
+                  className="flex items-center gap-1.5 font-mono text-xs opacity-70 hover:opacity-100 transition-opacity"
+                  style={{ color: 'var(--neon-cyan)' }}
                 >
                   <ExternalLink size={10} />
                   {link.label}
