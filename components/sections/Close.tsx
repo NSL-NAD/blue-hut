@@ -1,7 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
 import { Mail, Download } from 'lucide-react'
-import SectionWrapper from '@/components/ui/SectionWrapper'
 
 export default function Close() {
   const handleDownload = async () => {
@@ -10,7 +9,11 @@ export default function Close() {
   }
 
   return (
-    <SectionWrapper sectionId="close" bg="deep">
+    <div
+      data-section="close"
+      className="relative w-full min-h-[100dvh] flex flex-col overflow-hidden"
+      style={{ backgroundColor: 'var(--bg-deep)', color: 'var(--text-primary)' }}
+    >
       {/* Star field */}
       <div className="star-field" />
 
@@ -18,8 +21,11 @@ export default function Close() {
       <div className="dot-grid" style={{ top: '8%', left: '5%', width: '120px', height: '96px' }} />
       <div className="dot-grid-pink" style={{ top: '10%', right: '5%', width: '96px', height: '72px' }} />
 
-      {/* Content — pushed to upper portion */}
-      <div className="flex flex-col items-center justify-start text-center relative z-20 pt-4 pb-8">
+      {/* Content — flex-1 fills all space above the sun; paddingBottom reserves sun height + gap */}
+      <div
+        className="flex-1 flex flex-col items-center justify-center text-center relative z-20 px-6 md:px-12"
+        style={{ paddingBottom: 'calc(260px + 40px)' }}
+      >
         <motion.h2
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -83,6 +89,18 @@ export default function Close() {
         </motion.div>
       </div>
 
+      {/* Footer — pinned just above the sun */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 0.4 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+        className="absolute left-0 right-0 z-20 text-center font-mono text-[0.65rem] tracking-wider"
+        style={{ bottom: 'calc(260px + 12px)', color: 'var(--text-dim)' }}
+      >
+        Confidential — For Discussion Purposes Only | N-Squared | March 2026
+      </motion.p>
+
       {/* Sun atmospheric glow */}
       <div
         style={{
@@ -100,7 +118,7 @@ export default function Close() {
         }}
       />
 
-      {/* Enhanced synthwave sun — full half-circle at bottom edge */}
+      {/* Enhanced synthwave sun — full half-circle flush to bottom edge, no padding */}
       <div
         style={{
           position: 'absolute',
@@ -147,18 +165,6 @@ export default function Close() {
 
       {/* Enhanced synthwave grid floor */}
       <div className="synthwave-grid" />
-
-      {/* Footer — above the grid */}
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 0.4 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
-        className="relative z-20 text-center mt-auto pt-4 pb-2 font-mono text-[0.65rem] tracking-wider"
-        style={{ color: 'var(--text-dim)' }}
-      >
-        Confidential — For Discussion Purposes Only | N-Squared | March 2026
-      </motion.p>
-    </SectionWrapper>
+    </div>
   )
 }
