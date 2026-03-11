@@ -22,9 +22,9 @@ const mono = Space_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Blue Hut — A Community Concession Concept for McKinley Beach',
+  title: 'Blue Hut — A Community Beach Cafe Concept for McKinley Beach',
   description:
-    'A community-driven concession stand renovation and conversion concept for McKinley Beach, Milwaukee, WI.',
+    'A community-driven beach cafe renovation and conversion concept for McKinley Beach, Milwaukee, WI.',
 }
 
 export default function RootLayout({

@@ -8,6 +8,7 @@ const cards = [
     icon: UtensilsCrossed,
     title: 'Seasonal Quick Eats',
     description: 'Fresh, approachable food that fits the lakefront setting.',
+    note: undefined,
     color: 'var(--neon-pink)',
   },
   {
@@ -26,6 +27,7 @@ const cards = [
     icon: ChefHat,
     title: 'Bartolotta Items',
     description: 'Signature offerings — beach-appropriate, premium quality.',
+    note: 'if desired',
     color: 'var(--neon-purple)',
   },
 ]
@@ -73,9 +75,16 @@ export default function MenuConcept() {
               <card.icon size={32} style={{ color: card.color }} />
             </div>
             <div>
-              <h3 className="font-display text-lg font-bold mb-1">
-                {card.title}
-              </h3>
+              <div className="flex items-baseline gap-2 mb-1">
+                <h3 className="font-display text-lg font-bold">
+                  {card.title}
+                </h3>
+                {card.note && (
+                  <span className="font-mono text-[0.6rem] italic" style={{ color: 'var(--text-dim)' }}>
+                    {card.note}
+                  </span>
+                )}
+              </div>
               <p className="font-body text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
                 {card.description}
               </p>

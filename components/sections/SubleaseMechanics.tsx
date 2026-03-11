@@ -8,7 +8,7 @@ const mechanics = [
     number: '01',
     title: 'Time & Materials',
     description:
-      'N-Squared covers all time, materials, and labor to renovate the concession stand — at no cost to existing partners.',
+      'N-Squared covers all time, materials, and labor to renovate the cafe — at no cost to existing partners.',
     color: 'var(--neon-pink)',
   },
   {

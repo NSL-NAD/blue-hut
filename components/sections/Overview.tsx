@@ -47,13 +47,13 @@ export default function Overview() {
           className="font-body text-lg md:text-xl leading-relaxed max-w-3xl font-light"
           style={{ color: 'var(--text-secondary)' }}
         >
-          McKinley Beach&rsquo;s concession stand &mdash; the &ldquo;Blue Hut&rdquo; &mdash;
-          is an untapped opportunity sitting idle. N-Squared takes on full ownership
-          of everything: staffing, operations, marketing, programming, and day-to-day
-          hustle. Bartolotta and the County don&rsquo;t lift a finger &mdash; no oversight,
-          no operational burden, no risk. Our partners simply benefit from the result:
-          at minimum, a meaningful cost reduction; at best, a new revenue stream from
-          a space that was previously generating nothing.
+          We&rsquo;re proposing a beach cafe concept, built on a trusted partnership
+          that activates this underutilized space year-round. N-Squared takes on full
+          ownership of everything: staffing, operations, marketing, programming, and
+          day-to-day hustle. Bartolotta and the County don&rsquo;t lift a finger &mdash;
+          no oversight, no operational burden, no risk. Our partners simply benefit
+          from the result: at minimum, a meaningful cost reduction; at best, a new
+          revenue stream from a space that was previously generating nothing.
         </motion.p>
 
         {/* Highlight pills */}

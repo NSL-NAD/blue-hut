@@ -75,7 +75,7 @@ export default function Hero() {
           className="font-body text-xl md:text-2xl font-light mb-10 max-w-2xl mx-auto"
           style={{ color: 'var(--text-primary)', opacity: 0.9 }}
         >
-          A community-driven concession concept for the lakefront
+          A community-driven beach cafe concept for the lakefront
         </motion.p>
 
         <motion.p
