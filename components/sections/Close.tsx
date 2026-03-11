@@ -11,19 +11,14 @@ export default function Close() {
 
   return (
     <SectionWrapper sectionId="close" bg="deep">
-      {/* Synthwave sun — positioned at very bottom, just above grid */}
-      <div className="synthwave-sun" />
-
-      {/* Enhanced synthwave grid floor */}
-      <div className="synthwave-grid" />
-
       {/* Floating geometric accents */}
       <div className="geo-diamond" style={{ top: '10%', left: '8%', width: '60px', height: '60px', borderColor: 'rgba(255,45,123,0.1)' }} />
       <div className="geo-diamond" style={{ top: '15%', right: '10%', width: '40px', height: '40px', borderColor: 'rgba(0,240,255,0.08)' }} />
-      <div className="geo-ring" style={{ bottom: '55%', left: '12%', width: '90px', height: '90px', borderColor: 'rgba(176,38,255,0.08)' }} />
+      <div className="geo-ring" style={{ top: '25%', left: '12%', width: '90px', height: '90px', borderColor: 'rgba(176,38,255,0.08)' }} />
       <div className="geo-ring" style={{ top: '20%', right: '15%', width: '60px', height: '60px', borderColor: 'rgba(255,214,0,0.06)' }} />
 
-      <div className="flex flex-col items-center justify-center text-center relative z-20">
+      {/* Content — pushed to upper portion */}
+      <div className="flex flex-col items-center justify-start text-center relative z-20 pt-4 pb-8">
         <motion.h2
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -37,7 +32,7 @@ export default function Close() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="font-body text-base md:text-lg leading-relaxed max-w-xl mb-12"
+          className="font-body text-base md:text-lg leading-relaxed max-w-xl mb-10"
           style={{ color: 'var(--text-secondary)' }}
         >
           McKinley Beach deserves a destination, not just a snack stand. This is
@@ -82,18 +77,24 @@ export default function Close() {
             Download Proposal
           </motion.button>
         </motion.div>
-
-        {/* Footer */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.4 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-20 font-mono text-[0.65rem] tracking-wider"
-          style={{ color: 'var(--text-dim)' }}
-        >
-          Confidential — For Discussion Purposes Only | N-Squared | March 2026
-        </motion.p>
       </div>
+
+      {/* Synthwave sun — sits between content and grid, fully visible */}
+      <div className="synthwave-sun" />
+
+      {/* Enhanced synthwave grid floor */}
+      <div className="synthwave-grid" />
+
+      {/* Footer — above the grid */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.4 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+        className="relative z-20 text-center mt-auto pt-4 pb-2 font-mono text-[0.65rem] tracking-wider"
+        style={{ color: 'var(--text-dim)' }}
+      >
+        Confidential — For Discussion Purposes Only | N-Squared | March 2026
+      </motion.p>
     </SectionWrapper>
   )
 }

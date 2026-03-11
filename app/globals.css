@@ -273,12 +273,13 @@ a, button, [role="button"], input[type="range"] {
    ============================================ */
 .synthwave-sun {
   position: absolute;
-  bottom: 18%;
+  bottom: 4%;
   left: 50%;
   transform: translateX(-50%);
-  width: 240px;
-  height: 120px;
-  border-radius: 240px 240px 0 0;
+  width: 260px;
+  height: 130px;
+  border-radius: 260px 260px 0 0;
+  z-index: 5;
   background: linear-gradient(180deg, #FF2D7B, #FF6B2D, #FFD600);
   overflow: hidden;
   pointer-events: none;
