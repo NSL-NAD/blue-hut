@@ -38,6 +38,7 @@ type Season = 'summer' | 'winter'
 export default function MenuItems() {
   const [active, setActive] = useState<Season>('summer')
   const [hovering, setHovering] = useState(false)
+  const [hoveringBack, setHoveringBack] = useState(false)
 
   const front = menus[active]
   const backKey: Season = active === 'summer' ? 'winter' : 'summer'
@@ -65,6 +66,8 @@ export default function MenuItems() {
         {/* Back card — peeking out, click to swap */}
         <div
           onClick={swap}
+          onMouseEnter={() => setHoveringBack(true)}
+          onMouseLeave={() => setHoveringBack(false)}
           style={{
             position: 'absolute',
             inset: 0,
@@ -83,8 +86,11 @@ export default function MenuItems() {
             className="w-full h-full rounded-2xl flex flex-col"
             style={{
               backgroundColor: 'var(--bg-elevated)',
-              border: '1px solid rgba(255,255,255,0.07)',
-              boxShadow: 'var(--shadow-soft)',
+              border: hoveringBack ? '1px solid rgba(0,240,255,0.55)' : '1px solid rgba(255,255,255,0.07)',
+              boxShadow: hoveringBack
+                ? '0 0 25px rgba(0,240,255,0.55), 0 0 60px rgba(0,240,255,0.25), var(--shadow-soft)'
+                : 'var(--shadow-soft)',
+              transition: 'box-shadow 0.25s ease, border-color 0.25s ease',
             }}
           >
             {/* Top stripe */}
