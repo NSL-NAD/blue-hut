@@ -48,11 +48,12 @@ export default function Overview() {
           style={{ color: 'var(--text-secondary)' }}
         >
           McKinley Beach&rsquo;s concession stand &mdash; the &ldquo;Blue Hut&rdquo; &mdash;
-          is an untapped opportunity. We&rsquo;re proposing a hands-off, trusted
-          partnership that activates this underutilized space year-round. Family-friendly
-          programming, community-first design, and a self-sustaining operation &mdash;
-          all with zero operational lift from existing partners. At minimum, a cost
-          reduction. At best, a meaningful new revenue stream.
+          is an untapped opportunity sitting idle. N-Squared takes on full ownership
+          of everything: staffing, operations, marketing, programming, and day-to-day
+          hustle. Bartolotta and the County don&rsquo;t lift a finger &mdash; no oversight,
+          no operational burden, no risk. Our partners simply benefit from the result:
+          at minimum, a meaningful cost reduction; at best, a new revenue stream from
+          a space that was previously generating nothing.
         </motion.p>
 
         {/* Highlight pills */}

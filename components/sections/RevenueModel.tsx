@@ -35,14 +35,19 @@ export default function RevenueModel() {
   const [convRate, setConvRate] = useState(25)
   const [opsCost, setOpsCost] = useState(500)
   const [merchConvRate, setMerchConvRate] = useState(5)
+  const [eventAttendees, setEventAttendees] = useState(500)
+
+  const EVENT_COUNT = 4
+  const EVENT_AVG_SPEND = 10
+  const annualEventRevenue = EVENT_COUNT * eventAttendees * EVENT_AVG_SPEND
 
   const monthlyData = useMemo(
     () => calculateMonthlyData(convRate, FIXED_REV_SHARE_PCT, opsCost, merchConvRate),
     [convRate, opsCost, merchConvRate]
   )
 
-  const annualGross = monthlyData.reduce((s, m) => s + m.monthlyRevenue + m.monthlyMerchRevenue, 0)
-  const annualNet = monthlyData.reduce((s, m) => s + m.monthlyNetProfit, 0)
+  const annualGross = monthlyData.reduce((s, m) => s + m.monthlyRevenue + m.monthlyMerchRevenue, 0) + annualEventRevenue
+  const annualNet = monthlyData.reduce((s, m) => s + m.monthlyNetProfit, 0) + annualEventRevenue * 0.70 // ~70% margin on events
 
   return (
     <SectionWrapper sectionId="revenue-model" bg="deep">
@@ -315,6 +320,62 @@ export default function RevenueModel() {
             />
           </BarChart>
         </ResponsiveContainer>
+      </motion.div>
+
+      {/* Pop-Up Event Revenue Callout */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ delay: 0.35 }}
+        className="card-neon mb-8"
+      >
+        <div className="flex flex-col md:flex-row md:items-center gap-6">
+          {/* Label + description */}
+          <div className="flex-1">
+            <p className="label-mono text-xs mb-2" style={{ color: 'var(--neon-pink)' }}>
+              ✦ Quarterly Pop-Up Events
+            </p>
+            <p className="font-body text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+              {EVENT_COUNT}× per year — additional foot traffic beyond daily baseline.
+              Estimated <span style={{ color: 'var(--text-primary)' }}>${EVENT_AVG_SPEND}/person</span> avg
+              spend (conservative). Not counted in daily conversion model above.
+            </p>
+          </div>
+
+          {/* Slider */}
+          <div className="md:w-64 shrink-0">
+            <div className="flex justify-between mb-2">
+              <span className="font-mono text-xs" style={{ color: 'var(--text-secondary)' }}>
+                Attendees / Event
+              </span>
+              <span className="font-mono text-sm font-bold" style={{ color: 'var(--neon-pink)' }}>
+                {eventAttendees.toLocaleString()}
+              </span>
+            </div>
+            <input
+              type="range"
+              min={100}
+              max={2000}
+              step={100}
+              value={eventAttendees}
+              onChange={(e) => setEventAttendees(Number(e.target.value))}
+              className="w-full"
+            />
+            <div className="flex justify-between mt-1.5">
+              <span className="font-mono text-[0.6rem]" style={{ color: 'var(--text-dim)' }}>100</span>
+              <span className="font-mono text-[0.6rem]" style={{ color: 'var(--text-dim)' }}>2,000</span>
+            </div>
+          </div>
+
+          {/* Annual uplift */}
+          <div className="shrink-0 text-center md:text-right">
+            <p className="font-mono text-[0.65rem] mb-1" style={{ color: 'var(--text-dim)' }}>Annual Event Revenue</p>
+            <p className="font-display text-2xl font-bold" style={{ color: 'var(--neon-pink)' }}>
+              +{formatCurrency(annualEventRevenue)}
+            </p>
+          </div>
+        </div>
       </motion.div>
 
       {/* Key assumptions */}
