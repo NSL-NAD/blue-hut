@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
+import { useTheme } from '@/context/ThemeContext'
 
 const LABELS = [
   'Hero', 'Overview', 'Menu Concept', 'Menu Items', 'Community',
@@ -7,6 +8,7 @@ const LABELS = [
 ]
 
 export default function DotNav() {
+  const { theme } = useTheme()
   const [active, setActive] = useState(0)
   const [hovered, setHovered] = useState<number | null>(null)
 
@@ -67,8 +69,12 @@ export default function DotNav() {
                 width: i === active ? 10 : 6,
                 height: i === active ? 10 : 6,
                 background: i === active ? 'var(--neon-pink)' : 'transparent',
-                border: i === active ? 'none' : '1.5px solid rgba(255,255,255,0.15)',
-                opacity: i === active ? 1 : 0.4,
+                border: i === active
+                  ? 'none'
+                  : theme === 'dark'
+                    ? '1.5px solid rgba(255,255,255,0.35)'
+                    : '1.5px solid rgba(0,0,0,0.3)',
+                opacity: i === active ? 1 : 0.7,
                 boxShadow: i === active ? '0 0 8px rgba(255,45,123,0.6)' : 'none',
               }}
             />
